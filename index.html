@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Juh Cosméticos — Prévia final</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf7f5;color:#2b211e}header{background:#211713;color:#fff;padding:20px 16px;position:sticky;top:0;z-index:2}.wrap{max-width:1100px;margin:auto}.brand{font-size:25px;font-weight:700}nav{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}nav button{border:0;background:#3b2a24;color:#fff;padding:9px 13px;border-radius:20px}.hero{padding:38px 16px 24px;text-align:center;background:linear-gradient(135deg,#f3e3d6,#fff)}.hero h1{font-size:34px;margin:0 0 8px}.hero p{margin:0;color:#6b5a53}.search{max-width:620px;width:calc(100% - 32px);display:block;margin:18px auto 0;padding:14px 17px;border:1px solid #ded5d0;border-radius:14px;background:#fff;font-size:16px}.title{padding:25px 16px 0;font-size:25px}.sub{padding:0 16px;color:#776963}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:20px;padding:20px 16px 45px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px #00000012;position:relative}.card img{width:100%;aspect-ratio:1.28/1;object-fit:contain;display:block;background:#fff}.info{padding:16px}.tag{font-size:12px;color:#8a5b45;font-weight:bold;text-transform:uppercase}.name{font-size:18px;line-height:1.25;margin:7px 0}.price{font-size:24px;font-weight:800;margin:12px 0}.buy{width:100%;border:0;background:#211713;color:#fff;padding:12px;border-radius:10px;font-weight:700;font-size:15px}.badge{position:absolute;top:11px;left:11px;background:#211713;color:#fff;padding:6px 9px;border-radius:18px;font-size:11px;font-weight:800}.note{margin:0 16px 25px;padding:12px 14px;border-radius:12px;background:#f2e1d6;color:#5c3f32;font-size:13px}@media(max-width:600px){.hero h1{font-size:29px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-left:12px;padding-right:12px}.card img{aspect-ratio:1.32/1}.info{padding:11px}.name{font-size:14px}.price{font-size:20px}.buy{font-size:13px;padding:10px}.tag{font-size:10px}}.lightbox-caption{order:-1;margin:0 0 10px;color:#fff;font-weight:600;font-size:14px;line-height:1.25;text-align:center;max-width:92vw;}
+.lightbox-cart-btn{display:block;margin:12px auto 0;padding:12px 22px;border:0;border-radius:999px;background:#111;color:#fff;font-weight:700;font-size:15px;cursor:pointer}.lightbox-cart-btn:active{transform:scale(.98)}
+/* Logo JUH Cosméticos */
+.brand-logo{display:block;width:min(310px,82vw);height:auto;margin:0 auto;border-radius:14px;box-shadow:0 4px 18px #0004}
+.brand{display:none}
+@media(max-width:600px){header{padding:8px 10px 9px}.brand-logo{width:min(245px,76vw);border-radius:10px}nav{margin-top:7px;gap:7px;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:2px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;white-space:nowrap;padding:8px 12px}}
+
+.category-bar{margin-top:10px;display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px;scrollbar-width:none}.category-bar::-webkit-scrollbar{display:none}.category-bar button{flex:0 0 auto;border:1px solid #6a554c;background:transparent;color:#fff;padding:8px 12px;border-radius:18px;font-size:13px;cursor:pointer}.category-bar button.active{background:#fff;color:#5c473f;border-color:#fff}.category-label{font-size:11px;color:#cdbeb7;text-transform:uppercase;letter-spacing:.08em;margin-top:10px;margin-bottom:4px}@media(max-width:600px){.category-bar button{font-size:12px;padding:7px 10px}}
+</style><style>
+.cart-float{position:fixed;right:18px;bottom:18px;z-index:50;width:58px;height:58px;border:0;border-radius:50%;background:#211713;color:#fff;box-shadow:0 8px 25px #0004;font-size:25px;cursor:pointer}.cart-count{position:absolute;right:-3px;top:-4px;background:#b8875a;color:#fff;border-radius:20px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}.cart-overlay{display:none;position:fixed;inset:0;background:#0008;z-index:60}.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(430px,92vw);background:#fff;display:flex;flex-direction:column}.cart-head{padding:18px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}.cart-head h2{margin:0;font-size:22px}.cart-close{border:0;background:none;font-size:30px}.cart-items{padding:15px;overflow:auto;flex:1}.cart-item{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:10px 0}.cart-item img{width:58px;height:58px;object-fit:cover;border-radius:9px}.cart-item h3{font-size:13px;margin:0 0 4px}.cart-item p{margin:0;font-weight:700}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:1px solid #ddd;background:#f7f3f0;border-radius:7px;width:28px;height:28px}.remove{border:0;background:none;color:#8a5b45;font-size:11px;padding:4px 0}.cart-foot{padding:15px;border-top:1px solid #eee}.cart-total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin-bottom:12px}.checkout{width:100%;border:0;background:#211713;color:#fff;padding:13px;border-radius:10px;font-weight:800}.empty{text-align:center;color:#777;padding:40px 10px}
+</style>
+<style>
+.product-number{
+  position:absolute;
+  top:11px;
+  right:11px;
+  z-index:3;
+  background:#f2e1d6;
+  color:#5c3f32;
+  padding:6px 9px;
+  border-radius:18px;
+  font-size:11px;
+  font-weight:800;
+}
+</style>
+<style id="catalog-image-lightbox">
+  .image-lightbox{
+    position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;
+    align-items:center;justify-content:center;flex-direction:column;padding:58px 18px 24px;z-index:99999;
+    cursor:zoom-out;backdrop-filter:blur(3px)
+  }
+  .image-lightbox.open{display:flex}
+  .image-lightbox img{
+    max-width:94vw;max-height:78vh;width:auto;height:auto;object-fit:contain;
+    border-radius:12px;box-shadow:0 12px 45px rgba(0,0,0,.45);cursor:default
+  }
+  .image-lightbox .close{
+    position:absolute;top:14px;right:18px;width:42px;height:42px;border:0;
+    border-radius:50%;background:rgba(255,255,255,.16);color:#fff;
+    font-size:30px;line-height:42px;cursor:pointer
+  }
+  .card img{cursor:zoom-in}
+</style>
+<style id="product-number-fix-v2">
+.card{position:relative !important;}
+.card .number{
+  position:absolute !important;
+  top:12px !important;
+  right:12px !important;
+  left:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  z-index:20 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:40px !important;
+  height:30px !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:#f2e1d6 !important;
+  color:#5c3f32 !important;
+  border-radius:18px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+}
+</style>
+<style id="product-number-real-fix">
+.card{position:relative !important;}
+.card .product-number{
+  position:absolute !important;
+  top:11px !important;
+  right:11px !important;
+  left:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  z-index:30 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:40px !important;
+  height:30px !important;
+  box-sizing:border-box !important;
+  padding:0 9px !important;
+  margin:0 !important;
+  background:#f2e1d6 !important;
+  color:#5c3f32 !important;
+  border-radius:18px !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+}
+</style>
+<style id="number-under-sticky-header">
+header{z-index:100 !important;}
+.card{position:relative !important; z-index:1 !important;}
+.card .product-number{
+  position:absolute !important;
+  top:11px !important;
+  right:11px !important;
+  left:auto !important;
+  bottom:auto !important;
+  transform:none !important;
+  z-index:1 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:40px !important;
+  height:30px !important;
+  box-sizing:border-box !important;
+  padding:0 9px !important;
+  margin:0 !important;
+  background:#f2e1d6 !important;
+  color:#5c3f32 !important;
+  border-radius:18px !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  pointer-events:none !important;
+}
+</style>
+<style id="ajuste-fotos-021-026-028">
+.card[data-product-number="021"] img,
+.card[data-product-number="026"] img,
+.card[data-product-number="028"] img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+}
+</style>
+<style id="cart-clear-style">
+.cart-clear-row{display:flex;justify-content:flex-end;margin:8px 0 10px}
+.cart-clear{border:0;background:transparent;color:#8a5b45;font-size:12px;font-weight:700;padding:6px 4px;cursor:pointer}
+.cart-clear:active{opacity:.65}
+</style>
+<style id="interface-premium-v1">
+:root{
+ --bg:#fbf8f6;--surface:#fff;--ink:#2a201e;--muted:#766963;--line:#eadfd9;
+ --accent:#9b6a58;--accent-dark:#6f493c;--soft:#f3e7e1;--gold:#b8925b;
+}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 50% -10%,#fff 0,#fbf8f6 42%,#f8f3f0 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+header{background:rgba(42,32,30,.96)!important;backdrop-filter:blur(14px);padding:14px 16px!important;box-shadow:0 5px 24px rgba(42,32,30,.14)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px}
+.brand{font-family:Georgia,'Times New Roman',serif!important;font-size:29px!important;letter-spacing:.5px}
+.brand:after{content:'  •  beleza & cuidados';font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#d9c1b5;font-weight:500;vertical-align:middle}
+nav{margin-top:0!important;gap:7px!important;justify-content:flex-end}
+nav button{background:transparent!important;border:1px solid rgba(255,255,255,.22)!important;color:#fff!important;padding:9px 13px!important;border-radius:999px!important;font-weight:700;transition:.2s}
+nav button:hover,nav button:active{background:#fff!important;color:#2a201e!important}
+.hero{position:relative;overflow:hidden;padding:58px 16px 30px!important;background:linear-gradient(135deg,#f3e4dc 0%,#fffaf7 48%,#eee1da 100%)!important;border-bottom:1px solid #eee1da}
+.hero:before,.hero:after{content:'';position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none}
+.hero:before{width:220px;height:220px;background:rgba(184,146,91,.12);right:-70px;top:-90px}
+.hero:after{width:170px;height:170px;background:rgba(155,106,88,.08);left:-65px;bottom:-90px}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(34px,6vw,52px)!important;line-height:1.05;letter-spacing:-1px;margin:0 auto 12px!important;max-width:720px}
+.hero p{font-size:14px!important;color:#6f625d!important;letter-spacing:.2px}
+.search{position:relative;z-index:2;max-width:720px!important;margin:-3px auto 0!important;padding:16px 20px!important;border:1px solid #e6d9d2!important;border-radius:999px!important;background:rgba(255,255,255,.96)!important;box-shadow:0 12px 32px rgba(66,45,38,.10)!important;outline:none!important;color:var(--ink);font-size:15px!important}
+.search:focus{border-color:#c6a99b!important;box-shadow:0 0 0 4px rgba(155,106,88,.10),0 12px 32px rgba(66,45,38,.10)!important}
+.title{max-width:1180px;margin:34px auto 0!important;padding:0 16px!important;font-family:Georgia,'Times New Roman',serif;font-size:30px!important}
+.sub{max-width:1180px;margin:6px auto 0!important;padding:0 16px!important;color:var(--muted)!important;font-size:14px}
+.note{max-width:1180px;margin:18px auto 0!important;border:1px solid #ead9ce!important;background:#f7eee9!important;color:#6f4d40!important;border-radius:14px!important;padding:10px 14px!important;font-size:12px!important}
+main.wrap{max-width:1180px!important}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important;padding:22px 16px 60px!important}
+.card{border:1px solid #eee4df;background:rgba(255,255,255,.98)!important;border-radius:20px!important;box-shadow:0 8px 28px rgba(48,34,29,.07)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(48,34,29,.12)!important;border-color:#e2d0c7}
+.card img{aspect-ratio:1/1.04!important;background:linear-gradient(180deg,#fff,#fcfaf9)!important;padding:12px;transition:transform .28s ease}
+.card:hover img{transform:scale(1.025)}
+.info{padding:14px 15px 16px!important}
+.tag{color:var(--accent)!important;font-size:10px!important;letter-spacing:1.1px}
+.name{font-size:16px!important;line-height:1.3!important;min-height:42px;margin:7px 0!important}
+.price{font-size:22px!important;margin:11px 0 12px!important;color:#241b18}
+.buy{background:linear-gradient(135deg,#2c211e,#4a332b)!important;border-radius:12px!important;padding:12px!important;box-shadow:0 5px 12px rgba(42,32,30,.12);transition:.2s}
+.buy:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.badge{top:12px!important;left:12px!important;background:#fff!important;color:#7b5548!important;border:1px solid #ead9d0!important;box-shadow:0 4px 12px rgba(0,0,0,.06);font-size:10px!important}
+.product-number{background:#2c211e!important;color:#fff!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.cart-float{width:60px!important;height:60px!important;right:18px!important;bottom:18px!important;background:linear-gradient(135deg,#2c211e,#6b473a)!important;box-shadow:0 12px 30px rgba(42,32,30,.25)!important;font-size:24px!important}
+.cart-count{background:#c39b62!important;border:2px solid #fff;min-width:23px!important;height:23px!important}
+.cart-overlay{background:rgba(28,20,18,.56)!important;backdrop-filter:blur(3px)}
+.cart-panel{width:min(460px,94vw)!important;background:#fbf9f8!important;box-shadow:-15px 0 45px rgba(0,0,0,.18)}
+.cart-head{padding:20px!important;background:#fff;border-bottom:1px solid var(--line)!important}
+.cart-head h2{font-family:Georgia,'Times New Roman',serif;font-size:25px!important}
+.cart-close{width:40px;height:40px;border-radius:50%;background:#f4ece8!important;color:#4a332b;font-size:26px!important}
+.cart-items{padding:15px 18px!important}
+.cart-item{padding:13px 0!important;border-bottom:1px solid #eee4df!important}
+.cart-item img{width:62px!important;height:62px!important;border-radius:12px!important;background:#fff}
+.qty button{background:#fff!important;border-color:#dfd1ca!important;border-radius:8px!important}
+.cart-foot{padding:18px!important;background:#fff;border-top:1px solid var(--line)!important}
+.cart-total{font-size:20px!important}
+.checkout{background:linear-gradient(135deg,#2c211e,#6b473a)!important;border-radius:12px!important;padding:14px!important}
+.cart-clear{color:#9b6a58!important}
+.empty{padding:55px 10px!important}
+.image-lightbox{background:rgba(22,16,14,.88)!important}
+.image-lightbox img{max-width:90vw!important;max-height:76vh!important;border-radius:16px!important;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)!important}
+.lightbox-caption{font-family:Georgia,'Times New Roman',serif;font-size:16px!important;letter-spacing:.1px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:700px){
+ header .wrap{display:block;text-align:center}.brand{font-size:27px!important}.brand:after{display:block;margin-top:2px;font-size:8px}nav{margin-top:11px!important;justify-content:center}
+ .hero{padding:44px 16px 28px!important}.hero h1{font-size:35px!important}.search{width:calc(100% - 24px)!important}
+ .title{font-size:27px!important;margin-top:28px!important}.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important;padding:18px 11px 48px!important}
+ .card{border-radius:16px!important}.card img{padding:8px!important}.info{padding:10px 10px 12px!important}.name{font-size:13px!important;min-height:50px!important}.price{font-size:19px!important}.buy{font-size:12px!important;padding:10px 7px!important}.tag{font-size:9px!important}.badge{top:8px!important;left:8px!important;padding:5px 7px!important}.product-number{top:8px!important;right:8px!important;min-width:36px!important;height:27px!important;font-size:10px!important}
+ .cart-float{right:14px!important;bottom:14px!important}
+}
+@media(max-width:380px){.hero h1{font-size:31px!important}.name{font-size:12px!important}.price{font-size:18px!important}.buy{font-size:11px!important}}
+</style>
+<style id="favorites-style">
+.favorite-btn{position:absolute;top:10px;right:10px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 4px 14px #00000018;color:#9b6a58;font-size:21px;line-height:1;cursor:pointer;z-index:4}.favorite-btn.active{color:#c34f72;background:#fff1f5}.favorite-btn:active{transform:scale(.92)}
+.favorites-toggle{border:1px solid #eadfd9!important;background:#fff!important;color:#6f493c!important;border-radius:999px!important;padding:8px 12px!important;font-weight:700!important}.favorites-toggle.active{background:#6f493c!important;color:#fff!important;border-color:#6f493c!important}.favorites-empty{margin:20px 16px;padding:28px 18px;text-align:center;background:#fff;border:1px solid #eadfd9;border-radius:18px;color:#766963}.favorites-empty strong{display:block;color:#2a201e;font-size:17px;margin-bottom:6px}
+@media(max-width:600px){.favorite-btn{width:34px;height:34px;font-size:19px;top:8px;right:8px}}
+</style>
+<style id="cart-above-header-fix">
+/* O carrinho sempre fica acima do cabeçalho fixo/sticky */
+.cart-overlay{z-index:2000!important;}
+.cart-panel{z-index:2001!important;}
+.cart-float{z-index:1990!important;}
+@media(max-width:600px){
+  .cart-panel{width:100vw!important;max-width:100vw!important;height:100dvh!important;}
+}
+</style>
+<style id="favorite-under-number-fix">
+/* O coração fica abaixo do número do produto, sem sobreposição */
+.favorite-btn{
+  top:52px !important;
+  right:10px !important;
+  z-index:4 !important;
+}
+@media(max-width:600px){
+  .favorite-btn{top:48px !important;right:8px !important;width:34px !important;height:34px !important;font-size:19px !important;}
+}
+</style>
+<style id="favorite-and-number-final">
+/* Favoritos volta para o canto superior direito; número pequeno na parte inferior do card. */
+.favorite-btn{
+  top:10px !important;
+  right:10px !important;
+  width:38px !important;
+  height:38px !important;
+  z-index:6 !important;
+}
+.card .product-number{
+  position:static !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:26px !important;
+  height:19px !important;
+  padding:0 6px !important;
+  margin:7px 0 0 !important;
+  background:#f2e1d6 !important;
+  color:#7b5548 !important;
+  border:1px solid #ead9d0 !important;
+  border-radius:10px !important;
+  box-shadow:none !important;
+  font-size:9px !important;
+  line-height:1 !important;
+  z-index:2 !important;
+}
+@media(max-width:600px){
+  .favorite-btn{top:8px !important;right:8px !important;width:34px !important;height:34px !important;font-size:19px !important;}
+  .card .product-number{min-width:24px !important;height:18px !important;font-size:8px !important;margin-top:6px !important;padding:0 5px !important;}
+}
+</style>
+<style id="share-product-style">
+.share-product{
+  width:100%;
+  margin-top:8px;
+  border:1px solid #d9c5bd;
+  background:#fff;
+  color:#7a5147;
+  padding:10px 8px;
+  border-radius:12px;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+  transition:.2s;
+}
+.share-product:active{transform:scale(.98)}
+.share-product:hover{background:#faf3f0}
+@media(max-width:380px){
+  .share-product{font-size:11px;padding:9px 6px}
+}
+.share-toast{
+  position:fixed;
+  left:50%;
+  bottom:22px;
+  transform:translateX(-50%);
+  background:#2c211e;
+  color:#fff;
+  padding:11px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  z-index:99999;
+  box-shadow:0 8px 24px #0003;
+}
+.card.share-highlight{
+  outline:3px solid #c99582;
+  outline-offset:2px;
+}
+</style>
+<style>
+.name{cursor:pointer}.name:hover{text-decoration:underline;text-decoration-color:#b98773;text-underline-offset:3px}
+.product-detail-overlay{position:fixed;inset:0;background:rgba(25,18,15,.72);z-index:99990;display:none;align-items:flex-start;justify-content:center;padding:18px 10px;overflow:auto;backdrop-filter:blur(3px)}
+.product-detail-overlay.open{display:flex}.product-detail-panel{width:min(760px,100%);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.35);position:relative;margin:auto}
+.product-detail-close{position:absolute;right:12px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#211713;font-size:29px;line-height:42px;box-shadow:0 5px 20px rgba(0,0,0,.14);z-index:3}
+.product-detail-main{display:grid;grid-template-columns:minmax(240px,43%) 1fr;gap:22px;padding:22px}.product-detail-image{width:100%;aspect-ratio:1/1;object-fit:contain;background:#faf8f6;border-radius:16px}
+.product-detail-brand{font-size:12px;letter-spacing:2px;color:#8a685b;font-weight:800;text-transform:uppercase;margin:8px 0}.product-detail-title{font-size:27px;line-height:1.12;margin:4px 0 12px;color:#241b18}.product-detail-price{font-size:29px;font-weight:900;margin:0 0 18px}
+.product-detail-meta{border-top:1px solid #eee;border-bottom:1px solid #eee;padding:12px 0;margin-bottom:14px;font-size:13px}.product-detail-meta div{display:flex;justify-content:space-between;gap:12px;padding:5px 0;color:#766963}.product-detail-meta strong{color:#2b211e}
+.product-detail-actions{display:grid;gap:9px}.product-detail-actions button{width:100%;border-radius:12px;padding:12px;font-weight:800;font-size:15px}.product-detail-buy{border:0;background:#211713;color:#fff}.product-detail-share{border:1px solid #d9ccc5;background:#fff;color:#6b4e43}
+.related-wrap{border-top:1px solid #eee;background:#fcfaf9;padding:14px 16px 17px}.related-title{font-size:16px;font-weight:900;margin:0 0 10px;color:#2b211e}.related-sub{font-size:12px;color:#786b65;margin:-5px 0 10px}.related-list{display:flex;gap:10px;overflow-x:auto;padding:2px 1px 5px;scroll-snap-type:x proximity}
+.related-card{flex:0 0 132px;background:#fff;border:1px solid #eadfd9;border-radius:13px;padding:7px;cursor:pointer;scroll-snap-align:start}.related-card img{width:100%;height:112px;object-fit:contain;border-radius:9px;background:#fafafa}.related-card .r-brand{font-size:9px;letter-spacing:1px;font-weight:800;color:#977568;text-transform:uppercase;margin-top:6px}.related-card .r-name{font-size:11px;line-height:1.2;font-weight:700;height:40px;overflow:hidden;margin-top:3px}.related-card .r-price{font-size:13px;font-weight:900;margin-top:5px}
+@media(max-width:650px){.product-detail-overlay{padding:8px 6px}.product-detail-panel{border-radius:18px}.product-detail-main{grid-template-columns:1fr;gap:11px;padding:12px 12px 10px}.product-detail-image{max-height:47vh;aspect-ratio:1/1}.product-detail-title{font-size:21px;margin-bottom:8px}.product-detail-price{font-size:24px;margin-bottom:10px}.product-detail-meta{padding:8px 0;margin-bottom:9px}.product-detail-actions{gap:7px}.product-detail-actions button{padding:10px;font-size:14px}.related-wrap{padding:10px 11px 12px}.related-title{font-size:14px;margin-bottom:7px}.related-sub{font-size:11px;margin-bottom:7px}.related-card{flex-basis:112px;padding:6px}.related-card img{height:88px}.related-card .r-name{font-size:10px;height:36px}.related-card .r-price{font-size:12px}}
+</style><style>
+.category-bar .smart-filter{border:1px solid #dccbc3;background:#fff7f3;color:#6b4e43}
+.category-bar .smart-filter.active{background:#2c211e;color:#fff;border-color:#2c211e}
+.offer-badge{position:absolute;top:8px;left:8px;background:#2c211e;color:#fff;padding:4px 8px;border-radius:999px;font-size:10px;font-weight:800;z-index:2}
+.card{position:relative}
+</style><style id="light-product-tools">.product-detail-nav{display:flex;gap:8px;margin-top:8px}.product-detail-nav button,.product-detail-copy,.product-detail-link{border:0;border-radius:10px;padding:9px 11px;cursor:pointer;font:inherit}.product-detail-nav button{flex:1}.product-detail-copy,.product-detail-link{width:100%;margin-top:8px}.product-detail-nav button:disabled{opacity:.45;cursor:not-allowed}</style><style id="juh-small-info-style">.whatsapp-notice{margin:0 auto 14px;max-width:720px;padding:10px 14px;text-align:center;font-size:13px;font-weight:600;color:#6b4b3f;background:#f8eee9;border:1px solid #ead8cf;border-radius:12px}.product-detail-description{margin:12px 0 0;padding:12px 14px;background:#fbf7f5;border-radius:12px;color:#5a4840;font-size:14px;line-height:1.45}.product-detail-description strong{color:#2a211e}.product-detail-description:empty{display:none}@media(max-width:600px){.whatsapp-notice{margin:0 12px 12px;font-size:12px}.product-detail-description{font-size:13px}}</style>
+<link href="manifest.webmanifest" rel="manifest"/>
+<link href="icon-192.png" rel="apple-touch-icon"/>
+<meta content="#8b5cf6" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="JUH Cosméticos" name="apple-mobile-web-app-title"/>
+<style id="pwa-install-style">
+#pwaInstallBar{display:none;position:sticky;top:0;z-index:9999;background:#fff;padding:10px 14px;box-shadow:0 2px 10px rgba(0,0,0,.08);align-items:center;gap:10px;font:600 14px system-ui,-apple-system,sans-serif}
+#pwaInstallBar .pwa-text{flex:1;line-height:1.25}
+#pwaInstallBtn{border:0;border-radius:10px;padding:9px 12px;background:#111;color:#fff;font-weight:700;cursor:pointer}
+#pwaInstallClose{border:0;background:transparent;font-size:20px;line-height:1;cursor:pointer;padding:4px}
+</style>
+<style id="organized-product-number">
+.card > .product-number{
+ position:absolute !important; top:8px !important; left:8px !important; right:auto !important; bottom:auto !important;
+ min-width:36px !important; height:27px !important; margin:0 !important; padding:0 7px !important;
+ display:flex !important; align-items:center !important; justify-content:center !important;
+ z-index:30 !important; font-size:10px !important;
+}
+</style>
+</head><body>
+<div aria-label="Instalar aplicativo" id="pwaInstallBar" role="status">
+<div class="pwa-text">📱 Quer salvar a JUH Cosméticos no seu celular como aplicativo?</div>
+<button id="pwaInstallBtn" type="button">Instalar</button>
+<button aria-label="Fechar" id="pwaInstallClose" type="button">×</button>
+</div>
+<script id="product-detail-feature">
+document.addEventListener('DOMContentLoaded',function(){const overlay=document.getElementById('productDetailOverlay'),image=document.getElementById('detailImage'),brand=document.getElementById('detailBrand'),title=document.getElementById('detailTitle'),price=document.getElementById('detailPrice'),meta=document.getElementById('detailMeta'),buy=document.getElementById('detailBuy'),share=document.getElementById('detailShare'),list=document.getElementById('relatedList');let currentCard=null;
+function data(c){return{card:c,number:(c.querySelector('.product-number')?.textContent||'').trim(),name:(c.querySelector('.name')?.textContent||c.querySelector('img')?.alt||'').trim(),price:(c.querySelector('.price')?.textContent||'').trim(),brand:(c.dataset.brand||'').trim(),image:c.querySelector('img')?.currentSrc||c.querySelector('img')?.src||''}}
+function tokens(n){return n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').split(/[^a-z0-9]+/).filter(x=>x.length>3&&!['desodorante','colonia','hidratante','corporal','presente','natal','creme','loção','locao'].includes(x))}
+function related(c){const d=data(c),a=tokens(d.name);return[...document.querySelectorAll('.card')].filter(x=>x!==c).map(x=>{const q=data(x),b=tokens(q.name);let score=q.brand===d.brand?4:0;a.forEach(t=>{if(b.includes(t))score+=3});if(/kit|combo/i.test(d.name)&&/kit|combo/i.test(q.name))score++;return{x,score}}).sort((u,v)=>v.score-u.score||Number(data(u.x).number)-Number(data(v.x).number)).slice(0,8).map(z=>z.x)}
+function renderRelated(c){list.innerHTML='';related(c).forEach(x=>{const d=data(x),el=document.createElement('div');el.className='related-card';const im=document.createElement('img');im.src=d.image;im.alt='';el.append(im);const rb=document.createElement('div');rb.className='r-brand';rb.textContent=d.brand;el.append(rb);const rn=document.createElement('div');rn.className='r-name';rn.textContent=d.name;el.append(rn);const rp=document.createElement('div');rp.className='r-price';rp.textContent=d.price;el.append(rp);el.addEventListener('click',()=>open(x));list.append(el)})}
+function open(c){currentCard=c;const d=data(c);image.src=d.image;image.alt=d.name;brand.textContent=d.brand==='eudora'?'Eudora':d.brand==='natura'?'Natura':d.brand==='o boticário'?'O Boticário':d.brand||'Produto';title.textContent=d.name;price.textContent=d.price;meta.innerHTML='';[['Marca',brand.textContent],['Referência',d.number],['Preço',d.price]].forEach(v=>{const row=document.createElement('div'),a=document.createElement('span'),b=document.createElement('strong');a.textContent=v[0];b.textContent=v[1];row.append(a,b);meta.append(row)});const desc=document.getElementById('detailDescription');if(desc){desc.innerHTML='';if(d.number==='001'){desc.innerHTML='<strong>Conteúdo do kit:</strong> 1 Eudora Kiss Me Cabernet Desodorante Colônia 50ml + 1 Loção Perfumada Desodorante Corporal 100ml.';}}renderRelated(c);overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');document.body.style.overflow='';currentCard=null;const desc=document.getElementById('detailDescription');if(desc)desc.innerHTML=''}
+document.addEventListener('click',e=>{const n=e.target.closest('.name');if(!n)return;const c=n.closest('.card');if(c){e.preventDefault();e.stopPropagation();open(c)}});buy.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(currentCard){const b=currentCard.querySelector('.buy');if(b)b.click()}});share.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(currentCard){const b=currentCard.querySelector('.share-product');if(b)b.click()}});overlay.addEventListener('click',e=>{if(e.target===overlay)close()});overlay.querySelector('.product-detail-close').addEventListener('click',close);document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close()});window.juhOpenProductDetail=open});</script><script id="robust-cart-binding">
+(function(){
+function prepare(){document.querySelectorAll('.card').forEach(function(card){const btn=card.querySelector('.buy'),img=card.querySelector('img'),name=card.querySelector('.name'),price=card.querySelector('.price');if(!btn||!img||!name||!price)return;btn.dataset.product=name.textContent.trim();btn.dataset.price=price.textContent.trim();btn.dataset.image=img.currentSrc||img.src;btn.removeAttribute('onclick');});}
+document.addEventListener('click',function(e){const btn=e.target.closest('.buy');if(!btn)return;e.preventDefault();e.stopPropagation();if(typeof addToCart==='function')addToCart(btn.dataset.product||'',btn.dataset.price||'0',btn.dataset.image||'',btn);},true);
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',prepare);else prepare();window.juhPrepareBuyButtons=prepare;})();</script><div aria-hidden="true" class="product-detail-overlay" id="productDetailOverlay"><div aria-modal="true" class="product-detail-panel" role="dialog"><button aria-label="Fechar detalhes" class="product-detail-close" type="button">×</button><div class="product-detail-main"><img alt="" class="product-detail-image" id="detailImage"/><div class="product-detail-info"><div class="product-detail-brand" id="detailBrand"></div><h2 class="product-detail-title" id="detailTitle"></h2><div class="product-detail-price" id="detailPrice"></div><div class="product-detail-meta" id="detailMeta"></div><div class="product-detail-description" id="detailDescription"></div><div class="product-detail-actions"><button class="product-detail-buy" id="detailBuy" type="button">🛒 Colocar na sacola</button><button class="product-detail-share" id="detailShare" type="button">📤 Compartilhar este produto</button></div></div></div><div class="related-wrap"><div class="related-title">Você também pode gostar</div><div class="related-sub">Outras versões ou produtos parecidos</div><div class="related-list" id="relatedList"></div></div></div></div><header><div class="wrap"><img alt="JUH Cosméticos — Beleza &amp; Cuidados" class="brand-logo" src="produtos/logo.webp"/><nav><button onclick="filterProducts('todos')">Todos</button><button onclick="filterProducts('boticario')">O Boticário</button><button onclick="filterProducts('eudora')">Eudora</button></nav><div class="category-label">Categorias</div><div class="category-bar" id="categoryBar"><button class="active" data-category="todos" type="button">Todos</button><button data-category="perfumes" type="button">Perfumes</button><button data-category="body-splash" type="button">Body Splash</button><button data-category="hidratantes" type="button">Hidratantes</button><button data-category="desodorantes" type="button">Desodorantes</button><button data-category="sabonetes" type="button">Sabonetes</button><button data-category="kits" type="button">Kits</button><button data-category="cuidados-corporais" type="button">Cuidados Corporais</button><button class="smart-filter" data-category="destaques" type="button">⭐ Destaques</button><button class="smart-filter" data-category="ofertas" type="button">🏷️ Ofertas</button></div></div></header><section class="hero"><div class="wrap"><h1>Beleza que combina com você</h1><p>Prévia da loja com <span id="productCount">157</span> produtos selecionados.</p></div></section><div class="whatsapp-notice">🛍️ Monte sua sacola e finalize seu pedido pelo WhatsApp.</div><input class="search" id="searchInput" oninput="searchProducts()" placeholder="🔎 Buscar por nome, marca ou número..."/><h2 class="title">Produtos em destaque</h2><p class="sub">Confira os produtos disponíveis.</p><main class="wrap"><div class="grid"><article class="card" data-brand="eudora" data-featured="true" data-offer="false" data-product-number="001"><span class="product-number">001</span><span class="badge">Destaque</span><img alt="Kit Presente Natal Eudora Kiss Me Cabernet (2 itens)" src="produtos/001.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Eudora Kiss Me Cabernet (2 itens)</div><div class="price">R$ 129,99</div><button class="buy" onclick="addToCart('Kit Presente Natal Eudora Kiss Me Cabernet (2 itens)','129,90','produtos/001.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="true" data-offer="false" data-product-number="002"><span class="product-number">002</span><img alt="Eudora Bad Intention Desodorante Colônia 100 ml" src="https://down-br.img.susercontent.com/file/br-11134207-820m3-mohk8i313abnaa"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Bad Intention Desodorante Colônia 100 ml</div><div class="price">R$ 169,90</div><button class="buy" onclick="addToCart('Eudora Bad Intention Desodorante Colônia 100 ml','169,90','https://down-br.img.susercontent.com/file/br-11134207-820m3-mohk8i313abnaa',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="true" data-offer="false" data-product-number="003"><span class="product-number">003</span><img alt="Kit Presente Natal Egeo Dolce (2 itens)" src="produtos/003.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Kit Presente Natal Egeo Dolce (2 itens)</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Kit Presente Natal Egeo Dolce (2 itens)','174,90','produtos/003.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="true" data-offer="false" data-product-number="004"><span class="product-number">004</span><img alt="L’Eau de Lily Blanche Desodorante Colônia 75 ml" src="https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/leau-de-lily-blanche-desodorante-colonia-75ml-o-boticario-o-boticario/cluberosa/b86895/dd4adff2cd283f678c447114f73ffb4c.jpeg"/><div class="info"><div class="tag">O Boticário</div><div class="name">L’Eau de Lily Blanche Desodorante Colônia 75 ml</div><div class="price">R$ 239,90</div><button class="buy" onclick="addToCart('L’Eau de Lily Blanche Desodorante Colônia 75 ml','239,90','https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/leau-de-lily-blanche-desodorante-colonia-75ml-o-boticario-o-boticario/cluberosa/b86895/dd4adff2cd283f678c447114f73ffb4c.jpeg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="true" data-offer="false" data-product-number="005"><span class="product-number">005</span><img alt="Body Splash Desodorante Colônia Cereja de Fases 200 ml" src="https://down-br.img.susercontent.com/file/sg-11134201-8260i-mkn2jilq7imbb0"/><div class="info"><div class="tag">O Boticário</div><div class="name">Body Splash Desodorante Colônia Cereja de Fases 200 ml</div><div class="price">R$ 94,90</div><button class="buy" onclick="addToCart('Body Splash Desodorante Colônia Cereja de Fases 200 ml','94,90','https://down-br.img.susercontent.com/file/sg-11134201-8260i-mkn2jilq7imbb0',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="true" data-offer="false" data-product-number="006"><span class="product-number">006</span><span class="badge">Mais vendido</span><img alt="Floratta Red Desodorante Colônia 75 ml" src="produtos/006.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Red Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Red Desodorante Colônia 75 ml','174,90','produtos/006.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="true" data-offer="false" data-product-number="007"><span class="product-number">007</span><img alt="Creme Acetinado Hidratante Desodorante Corporal Lily 250 g" src="produtos/007.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Creme Acetinado Hidratante Desodorante Corporal Lily 250 g</div><div class="price">R$ 149,90</div><button class="buy" onclick="addToCart('Creme Acetinado Hidratante Desodorante Corporal Lily 250 g','149,90','produtos/007.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="true" data-offer="false" data-product-number="008"><span class="product-number">008</span><img alt="Kit Presente Natal Instance Baunilha Glow (2 itens)" src="produtos/008.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Instance Baunilha Glow (2 itens)</div><div class="price">R$ 99,90</div><button class="buy" onclick="addToCart('Kit Presente Natal Instance Baunilha Glow (2 itens)','99,90','produtos/008.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="009"><span class="product-number">009</span><span class="badge">Lançamento</span><img alt="Floratta Blue Crystal Desodorante Colônia 75 ml" src="https://fimgs.net/mdimg/secundar/o.158069.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Blue Crystal Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Blue Crystal Desodorante Colônia 75 ml','174,90','https://fimgs.net/mdimg/secundar/o.158069.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="010"><span class="product-number">010</span><img alt="Kit Presente Natal Eudora Duo Body Sprays (2 itens)" src="produtos/010.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Eudora Duo Body Sprays (2 itens)</div><div class="price">R$ 89,90</div><button class="buy" onclick="addToCart('Kit Presente Natal Eudora Duo Body Sprays (2 itens)','89,90','produtos/010.jpg',this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="011"><span class="product-number">011</span><img alt="" src="produtos/011.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Impression For Man (2 itens)</div><div class="price">R$ 84,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Impression For Man (2 itens)','84,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="012"><span class="product-number">012</span><img alt="" src="produtos/012.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Body Splash Desodorante Colônia Cuide-Se Bem Delicioso Chocolate 200 ml</div><div class="price">R$ 94,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Body Splash Desodorante Colônia Cuide-Se Bem Delicioso Chocolate 200 ml','94,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="013"><span class="product-number">013</span><img alt="" src="produtos/013.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Creme Hidratante Desodorante Corporal Instance Baunilha Intensa 400 ml</div><div class="price">R$ 64,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Creme Hidratante Desodorante Corporal Instance Baunilha Intensa 400 ml','64,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="014"><span class="product-number">014</span><img alt="" src="produtos/014.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Calendário do Advento 2026 O Boticário (12 itens)</div><div class="price">R$ 699,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Calendário do Advento 2026 O Boticário (12 itens)','699,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="015"><span class="product-number">015</span><img alt="" src="produtos/015.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Her Code (2 itens) 2026</div><div class="price">R$ 299,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Her Code (2 itens) 2026','200,99',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="016"><span class="product-number">016</span><img alt="" src="produtos/016.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Combo Sh+Cond Hair-Plastia</div><div class="price">R$ 102,99</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo Sh+Cond Hair-Plastia','112,98',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="017"><span class="product-number">017</span><img alt="" src="produtos/017.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Kit Presente Natal Lily Cuidados (2 itens)</div><div class="price">R$ 69,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Lily Cuidados (2 itens)','69,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="018"><span class="product-number">018</span><img alt="" src="produtos/018.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Club 6 Voyage (2 itens)</div><div class="price">R$ 179,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Club 6 Voyage (2 itens)','179,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="true" data-product-number="019"><span class="offer-badge">OFERTA</span><span class="product-number">019</span><img alt="" src="https://res.cloudinary.com/beleza-na-web/image/upload/w_1500%2Cf_avif%2Cfl_progressive%2Cq_auto%3Aeco%2Cw_800/v1/imagens/product/Q97821/8736ff82-6e94-4099-943f-67b10f6e99cb-qdb-14-26-gloss-melancia-97821-1.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Gloss Brilho Labial Melancia 4 ml</div><div class="price">R$ 39,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Gloss Brilho Labial Melancia 4 ml','39,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="020"><span class="product-number">020</span><img alt="" src="produtos/020.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Colônia Infantil Toy Story Sophie Vaqueira Valente 100 ml</div><div class="price">R$ 119,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Colônia Infantil Toy Story Sophie Vaqueira Valente 100 ml','119,90',this.closest(">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="021"><span class="product-number">021</span><img alt="Loção Desodorante Hidratante Corporal Cuide-Se Bem Cereja de Fases 400 ml" src="produtos/021.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Desodorante Hidratante Corporal Cuide-Se Bem Cereja de Fases 400 ml</div><div class="price">R$ 87,90</div><button class="buy" onclick="addToCart('Loção Desodorante Hidratante Corporal Cuide-Se Bem Cereja de Fases 400 ml','87,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="022"><span class="offer-badge">OFERTA</span><span class="product-number">022</span><img alt="Antitranspirante Roll-On Men 55 ml" src="produtos/022.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Antitranspirante Roll-On Men 55 ml</div><div class="price">R$ 29,90</div><button class="buy" onclick="addToCart('Antitranspirante Roll-On Men 55 ml','29,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="023"><span class="product-number">023</span><img alt="Loção Desodorante Hidratante Corporal Linda Irresistível 200 ml" src="produtos/023.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Desodorante Hidratante Corporal Linda Irresistível 200 ml</div><div class="price">R$ 69,90</div><button class="buy" onclick="addToCart('Loção Desodorante Hidratante Corporal Linda Irresistível 200 ml','69,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="024"><span class="offer-badge">OFERTA</span><span class="product-number">024</span><img alt="Desodorante Antitranspirante Roll-On Malbec 55 ml" src="produtos/024.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Desodorante Antitranspirante Roll-On Malbec 55 ml</div><div class="price">R$ 29,90</div><button class="buy" onclick="addToCart('Desodorante Antitranspirante Roll-On Malbec 55 ml','29,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="025"><span class="product-number">025</span><img alt="Creme Hidratante Desodorante Corporal Instance Âmbar Precioso 400 ml" src="produtos/025.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Creme Hidratante Desodorante Corporal Instance Âmbar Precioso 400 ml</div><div class="price">R$ 67,90</div><button class="buy" onclick="addToCart('Creme Hidratante Desodorante Corporal Instance Âmbar Precioso 400 ml','67,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="026"><span class="product-number">026</span><img alt="Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite Caramelizado 400 ml" src="produtos/026.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite Caramelizado 400 ml</div><div class="price">R$ 87,90</div><button class="buy" onclick="addToCart('Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite Caramelizado 400 ml','87,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="027"><span class="product-number">027</span><img alt="Club 6 Intenso Desodorante Colônia 95 ml" src="produtos/027.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Intenso Desodorante Colônia 95 ml</div><div class="price">R$ 169,90</div><button class="buy" onclick="addToCart('Club 6 Intenso Desodorante Colônia 95 ml','169,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="028"><span class="product-number">028</span><img alt="Creme Acetinado Desodorante Hidratante Corporal Love Lily 250 g" src="produtos/028.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Creme Acetinado Desodorante Hidratante Corporal Love Lily 250 g</div><div class="price">R$ 149,90</div><button class="buy" onclick="addToCart('Creme Acetinado Desodorante Hidratante Corporal Love Lily 250 g','149,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="029"><span class="product-number">029</span><img alt="Desodorante Colônia Club 6 Fever 95 ml" src="produtos/029.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Desodorante Colônia Club 6 Fever 95 ml</div><div class="price">R$ 169,90</div><button class="buy" onclick="addToCart('Desodorante Colônia Club 6 Fever 95 ml','169,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="030"><span class="product-number">030</span><img alt="Creme Hidratante Desodorante Corporal Instance Tâmara Negra 400 ml" src="produtos/030.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Creme Hidratante Desodorante Corporal Instance Tâmara Negra 400 ml</div><div class="price">R$ 67,90</div><button class="buy" onclick="addToCart('Creme Hidratante Desodorante Corporal Instance Tâmara Negra 400 ml','67,90',this.closest(&quot;.card&quot;).querySelector(&quot;img&quot;).src,this)">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="031"><span class="product-number">031</span><img alt="Body Splash Desodorante Colônia Cuide-Se Bem Amoruda 200 ml" src="produtos/031.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Body Splash Desodorante Colônia Cuide-Se Bem Amoruda 200 ml</div><div class="price">R$ 94,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Body Splash Desodorante Colônia Cuide-Se Bem Amoruda 200 ml','94,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="032"><span class="product-number">032</span><img alt="Liz Flora Desodorante Colônia 100 ml" src="produtos/032.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Liz Flora Desodorante Colônia 100 ml</div><div class="price">R$ 174,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Liz Flora Desodorante Colônia 100 ml','174,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="033"><span class="product-number">033</span><img alt="Magnific Rouge Camélia Desodorante Colônia 75 ml" src="produtos/033.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Magnific Rouge Camélia Desodorante Colônia 75 ml</div><div class="price">R$ 144,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Magnific Rouge Camélia Desodorante Colônia 75 ml','144,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="034"><span class="product-number">034</span><img alt="Combo Floratta Blue Crystal 02" src="produtos/034.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Floratta Blue Crystal 02</div><div class="price">R$ 194,81</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo Floratta Blue Crystal 02','194,81',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="035"><span class="product-number">035</span><img alt="Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200 ml" src="produtos/035.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200 ml</div><div class="price">R$ 94,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200 ml','94,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="036"><span class="offer-badge">OFERTA</span><span class="product-number">036</span><img alt="Body Spray Desodorante Corporal Floratta Blue Crystal 100 ml" src="produtos/036.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Body Spray Desodorante Corporal Floratta Blue Crystal 100 ml</div><div class="price">R$ 52,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Body Spray Desodorante Corporal Floratta Blue Crystal 100 ml','52,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="037"><span class="product-number">037</span><img alt="Kit Presente Natal Siàge Nutri Rosé (3 itens)" src="produtos/037.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Siàge Nutri Rosé (3 itens)</div><div class="price">R$ 132,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Siàge Nutri Rosé (3 itens)','132,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="038"><span class="product-number">038</span><img alt="L'Eau De Lily Desodorante Colônia 75 ml" src="produtos/038.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">L'Eau De Lily Desodorante Colônia 75 ml</div><div class="price">R$ 239,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart(&quot;L'Eau De Lily Desodorante Colônia 75 ml&quot;,'229,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="039"><span class="product-number">039</span><img alt="Kit Presente Natal Magnific Rouge Camélia (2 itens)" src="produtos/039.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kit Presente Natal Magnific Rouge Camélia (2 itens)</div><div class="price">R$ 159,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit Presente Natal Magnific Rouge Camélia (2 itens)','159,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="040"><span class="product-number">040</span><img alt="Loção Desodorante Hidratante Corporal Cuide-Se Bem Deleite 400 ml" src="produtos/040.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Desodorante Hidratante Corporal Cuide-Se Bem Deleite 400 ml</div><div class="price">R$ 87,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Loção Desodorante Hidratante Corporal Cuide-Se Bem Deleite 400 ml','87,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="041"><span class="product-number">041</span><img alt="Suflê Hidratante Desodorante Corporal Egeo High 250 g" src="produtos/041.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Suflê Hidratante Desodorante Corporal Egeo High 250 g</div><div class="price">R$ 79,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Suflê Hidratante Desodorante Corporal Egeo High 250 g','79,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="042"><span class="product-number">042</span><img alt="Desodorante Colônia Velvet Sensual Intense 100 ml" src="produtos/042.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Desodorante Colônia Velvet Sensual Intense 100 ml</div><div class="price">R$ 129,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Desodorante Colônia Velvet Sensual Intense 100 ml','129,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="043"><span class="product-number">043</span><img alt="Combo O.U.i Jardin de Grasse Rose Nat/26" src="produtos/043.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Combo O.U.i Jardin de Grasse Rose Nat/26</div><div class="price">R$ 318,01</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo O.U.i Jardin de Grasse Rose Nat/26','318,01',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="044"><span class="product-number">044</span><img alt="Combo O.U.i Scapin 245 Intense 02 Nat/26" src="produtos/044.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Combo O.U.i Scapin 245 Intense 02 Nat/26</div><div class="price">R$ 578,00</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo O.U.i Scapin 245 Intense 02 Nat/26','578,00',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="045"><span class="product-number">045</span><img alt="Pulse Desodorante Colônia 100 ml" src="produtos/045.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Pulse Desodorante Colônia 100 ml</div><div class="price">R$ 139,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Pulse Desodorante Colônia 100 ml','139,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="046"><span class="product-number">046</span><img alt="Combo O.U.i Lamouresse 02 Nat/26" src="produtos/046.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Combo O.U.i Lamouresse 02 Nat/26</div><div class="price">R$ 432,99</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo O.U.i Lamouresse 02 Nat/26','432,99',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="047"><span class="product-number">047</span><img alt="Loção Desodorante Hidratante Corporal Cuide-Se Bem Melancia 400 ml" src="produtos/047.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Desodorante Hidratante Corporal Cuide-Se Bem Melancia 400 ml</div><div class="price">R$ 87,90</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Loção Desodorante Hidratante Corporal Cuide-Se Bem Melancia 400 ml','87,90',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="048"><span class="product-number">048</span><img alt="Combo O.U.i Le Flaneur 020 Nat/26" src="produtos/048.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Combo O.U.i Le Flaneur 020 Nat/26</div><div class="price">R$ 478,00</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo O.U.i Le Flaneur 020 Nat/26','478,00',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="049"><span class="product-number">049</span><img alt="Combo O.U.i Le Charmeur 250 Nat/26" src="produtos/049.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Combo O.U.i Le Charmeur 250 Nat/26</div><div class="price">R$ 498,00</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Combo O.U.i Le Charmeur 250 Nat/26','498,00',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="050"><span class="product-number">050</span><img alt="Kit O.U.i EDP + Creme Corporal" src="produtos/050.jpg"/><div class="info"><div class="tag">O.U.i</div><div class="name">Kit O.U.i EDP + Creme Corporal</div><div class="price">R$ 499,00</div><button .card").queryselector("img").src,this)"="" class="buy" onclick="addToCart('Kit O.U.i EDP + Creme Corporal','499,00',this.closest(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="051"><span class="product-number">051</span><img alt="Floratta Fleur D'Éclipse Eau De Parfum 75 ml" src="produtos/051.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Fleur D'Éclipse Eau De Parfum 75 ml</div><div class="price">R$ 229,90</div><button class="buy" onclick="addToCart('Floratta Fleur D\'Éclipse Eau De Parfum 75 ml','229,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="052"><span class="product-number">052</span><img alt="Floratta Red Passion Eau De Parfum 75 ml" src="produtos/052.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Red Passion Eau De Parfum 75 ml</div><div class="price">R$ 229,90</div><button class="buy" onclick="addToCart('Floratta Red Passion Eau De Parfum 75 ml','229,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="053"><span class="product-number">053</span><img alt="Floratta Romance de Verão Desodorante Colônia 75 ml" src="produtos/053.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Romance de Verão Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Romance de Verão Desodorante Colônia 75 ml','174,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="054"><span class="product-number">054</span><img alt="Floratta My Blue Desodorante Colônia 75 ml" src="produtos/054.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta My Blue Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta My Blue Desodorante Colônia 75 ml','174,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="055"><span class="product-number">055</span><img alt="Floratta Flores Secretas Desodorante Colônia 75 ml" src="produtos/055.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Flores Secretas Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Flores Secretas Desodorante Colônia 75 ml','174,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="056"><span class="product-number">056</span><img alt="Floratta Red Blossom Desodorante Colônia 75 ml" src="produtos/056.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Red Blossom Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Red Blossom Desodorante Colônia 75 ml','174,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="057"><span class="product-number">057</span><img alt="Floratta Rose Desodorante Colônia 75 ml" src="produtos/057.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Rose Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick="addToCart('Floratta Rose Desodorante Colônia 75 ml','174,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="058"><span class="product-number">058</span><img alt="Combo Lily Glamour" src="produtos/058.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Lily Glamour</div><div class="price">R$ 529,80</div><button class="buy" onclick='addToCart("Combo Lily Glamour","529,80",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="059"><span class="product-number">059</span><img alt="Floratta Rose Bouquet Desodorante Colônia 75 ml" src="produtos/059.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Rose Bouquet Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick='addToCart("Floratta Rose Bouquet Desodorante Colônia 75 ml","174,90",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="060"><span class="offer-badge">OFERTA</span><span class="product-number">060</span><img alt="Creme Hidratante Desodorante Corporal Floratta Blue 75 g" src="produtos/060.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Creme Hidratante Desodorante Corporal Floratta Blue 75 g</div><div class="price">R$ 44,90</div><button class="buy" onclick='addToCart("Creme Hidratante Desodorante Corporal Floratta Blue 75 g","44,90",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="061"><span class="product-number">061</span><img alt="Floratta Blue Desodorante Colônia 75 ml" src="produtos/061.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Blue Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick='addToCart("Floratta Blue Desodorante Colônia 75 ml","174,90",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="062"><span class="product-number">062</span><img alt="Combo Uomini Insensatez" src="produtos/062.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Uomini Insensatez</div><div class="price">R$ 296,80</div><button class="buy" onclick='addToCart("Combo Uomini Insensatez","296,80",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="063"><span class="product-number">063</span><img alt="Combo Egeo Desodorante Colônia (Dolce + Blue)" src="produtos/063.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Egeo Desodorante Colônia (Dolce + Blue)</div><div class="price">R$ 309,80</div><button class="buy" onclick='addToCart("Combo Egeo Desodorante Colônia (Dolce + Blue)","309,80",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="064"><span class="product-number">064</span><img alt="Combo Shampoo e Condicionador Nutri Rosé" src="produtos/064.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Combo Shampoo e Condicionador Nutri Rosé</div><div class="price">R$ 102,98</div><button class="buy" onclick='addToCart("Combo Shampoo e Condicionador Nutri Rosé","102,98",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="065"><span class="product-number">065</span><img alt="Combo Malbec Arbo" src="produtos/065.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Malbec Arbo</div><div class="price">R$ 409,80</div><button class="buy" onclick='addToCart("Combo Malbec Arbo","409,80",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="066"><span class="product-number">066</span><img alt="Combo Floratta Red Egeo" src="produtos/066.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Combo Floratta Red Egeo</div><div class="price">R$ 339,80</div><button class="buy" onclick='addToCart("Combo Floratta Red Egeo","339,80",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="067"><span class="product-number">067</span><img alt="Floratta Gold Desodorante Colônia 75 ml" src="produtos/067.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Floratta Gold Desodorante Colônia 75 ml</div><div class="price">R$ 174,90</div><button class="buy" onclick='addToCart("Floratta Gold Desodorante Colônia 75 ml","174,90",this.closest(".card").querySelector("img").src,this)'>Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="true" data-product-number="068"><span class="offer-badge">OFERTA</span><span class="product-number">068</span><img alt="Club 6 Prestige Loção Desodorante Hidratante Corporal 150ML" src="produtos/068.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Prestige Loção Desodorante Hidratante Corporal 150ML</div><div class="price">R$ 52,99</div><button 150ml','52,99',this.closest(".card").queryselector("img").src,this)'="" 6="" class="buy" club="" corporal="" desodorante="" hidratante="" loção="" onclick="addToCart(" prestige="">Adicionar à sacola</button></div></article><article class="card" data-brand="oui" data-featured="false" data-offer="false" data-product-number="069"><span class="product-number">069</span><img alt="O.U.I Loção Hidratante Desodorante Élégance Royale 115 400ML" src="produtos/069.jpg"/><div class="info"><div class="tag">O.U.I</div><div class="name">O.U.I Loção Hidratante Desodorante Élégance Royale 115 400ML</div><div class="price">R$ 134,00</div><button 115="" 400ml','134,00',this.closest(".card").queryselector("img").src,this)'="" class="buy" desodorante="" hidratante="" loção="" o.u.i="" onclick="addToCart(" royale="" élégance="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="070"><span class="product-number">070</span><img alt="Club 6 Desodorante Colônia 95ML" src="produtos/070.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Desodorante Colônia 95ML</div><div class="price">R$ 169,90</div><button 6="" 95ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" club="" colônia="" desodorante="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="071"><span class="product-number">071</span><img alt="Club 6 Exclusive Desodorante Colônia 95ML" src="produtos/071.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Exclusive Desodorante Colônia 95ML</div><div class="price">R$ 169,90</div><button 6="" 95ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" club="" colônia="" desodorante="" exclusive="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="072"><span class="product-number">072</span><img alt="Eudora Royal Desodorante Colônia Masculino 100ML" src="produtos/072.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Royal Desodorante Colônia Masculino 100ML</div><div class="price">R$ 149,99</div><button 100ml','149,99',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" eudora="" masculino="" onclick="addToCart(" royal="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="073"><span class="product-number">073</span><img alt="Eudora Royal Desodorante Colônia Feminino 100ML" src="produtos/073.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Royal Desodorante Colônia Feminino 100ML</div><div class="price">R$ 149,99</div><button 100ml','149,99',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" eudora="" feminino="" onclick="addToCart(" royal="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="074"><span class="product-number">074</span><img alt="Intention/Man Des Col Close V2 100ML" src="produtos/074.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Intention/Man Des Col Close V2 100ML</div><div class="price">R$ 169,90</div><button 100ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" close="" col="" des="" intention="" man="" onclick="addToCart(" v2="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="075"><span class="product-number">075</span><img alt="Club 6 Desodorante Colônia 95ML" src="produtos/075.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Desodorante Colônia 95ML</div><div class="price">R$ 169,90</div><button 6="" 95ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" club="" colônia="" desodorante="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="076"><span class="product-number">076</span><img alt="Eudora Pulse Intense Desodorante Colônia 100ML" src="produtos/076.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Pulse Intense Desodorante Colônia 100ML</div><div class="price">R$ 139,90</div><button 100ml','139,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" eudora="" intense="" onclick="addToCart(" pulse="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="077"><span class="product-number">077</span><img alt="Club 6 Spotlight Desodorante Colônia 95ML" src="produtos/077.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Spotlight Desodorante Colônia 95ML</div><div class="price">R$ 169,90</div><button 6="" 95ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" club="" colônia="" desodorante="" onclick="addToCart(" spotlight="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="078"><span class="product-number">078</span><img alt="Strong Intention Desodorante Colônia 100ML" src="produtos/078.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Strong Intention Desodorante Colônia 100ML</div><div class="price">R$ 169,90</div><button 100ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" intention="" onclick="addToCart(" strong="">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="079"><span class="product-number">079</span><img alt="Arbo Botanic Desodorante Colônia 100ML" src="produtos/079.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Arbo Botanic Desodorante Colônia 100ML</div><div class="price">R$ 184,90</div><button 100ml','184,90',this.closest(".card").queryselector("img").src,this)'="" arbo="" botanic="" class="buy" colônia="" desodorante="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="080"><span class="product-number">080</span><img alt="Pulse Desodorante Colônia Action 100ML" src="produtos/080.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Pulse Desodorante Colônia Action 100ML</div><div class="price">R$ 139,90</div><button 100ml','139,90',this.closest(".card").queryselector("img").src,this)'="" action="" class="buy" colônia="" desodorante="" onclick="addToCart(" pulse="">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="081"><span class="product-number">081</span><img alt="Arbo Atlântica Desodorante Colônia 100ML" src="produtos/081.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Arbo Atlântica Desodorante Colônia 100ML</div><div class="price">R$ 189,90</div><button 100ml','189,90',this.closest(".card").queryselector("img").src,this)'="" arbo="" atlântica="" class="buy" colônia="" desodorante="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="082"><span class="product-number">082</span><img alt="Uomini Desodorante Colônia 100ML" src="produtos/082.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Uomini Desodorante Colônia 100ML</div><div class="price">R$ 209,90</div><button 100ml','209,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" onclick="addToCart(" uomini="">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="083"><span class="product-number">083</span><img alt="Arbo Intenso Desodorante Colônia 100ML" src="produtos/083.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Arbo Intenso Desodorante Colônia 100ML</div><div class="price">R$ 189,90</div><button 100ml','189,90',this.closest(".card").queryselector("img").src,this)'="" arbo="" class="buy" colônia="" desodorante="" intenso="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="084"><span class="product-number">084</span><img alt="Pulse Power Desodorante Colônia 100ML" src="produtos/084.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Pulse Power Desodorante Colônia 100ML</div><div class="price">R$ 119,90</div><button 100ml','119,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" colônia="" desodorante="" onclick="addToCart(" power="" pulse="">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="085"><span class="product-number">085</span><img alt="Arbo Puro Desodorante Colônia 100ML" src="produtos/085.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Arbo Puro Desodorante Colônia 100ML</div><div class="price">R$ 184,90</div><button 100ml','184,90',this.closest(".card").queryselector("img").src,this)'="" arbo="" class="buy" colônia="" desodorante="" onclick="addToCart(" puro="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="086"><span class="product-number">086</span><img alt="Pulse Boost Desodorante Colônia 100ML" src="produtos/086.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Pulse Boost Desodorante Colônia 100ML</div><div class="price">R$ 119,90</div><button 100ml','119,90',this.closest(".card").queryselector("img").src,this)'="" boost="" class="buy" colônia="" desodorante="" onclick="addToCart(" pulse="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="087"><span class="product-number">087</span><img alt="Bold Intention Desodorante Colônia 100ML" src="produtos/087.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Bold Intention Desodorante Colônia 100ML</div><div class="price">R$ 169,90</div><button 100ml','169,90',this.closest(".card").queryselector("img").src,this)'="" bold="" class="buy" colônia="" desodorante="" intention="" onclick="addToCart(">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="088"><span class="product-number">088</span><img alt="Intention/Man Des Col Close V2 100ML" src="produtos/088.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Intention/Man Des Col Close V2 100ML</div><div class="price">R$ 169,90</div><button 100ml','169,90',this.closest(".card").queryselector("img").src,this)'="" class="buy" close="" col="" des="" intention="" man="" onclick="addToCart(" v2="">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="089"><span class="product-number">089</span><img alt="Eudora Diva Fabulosa 100 ml" src="produtos/089.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Diva Fabulosa 100 ml</div><div class="price">R$ 149,90</div><button class="buy" onclick="addToCart('Eudora Diva Fabulosa 100 ml','149,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="090"><span class="product-number">090</span><img alt="Kiss Me Delicious 50 ml" src="produtos/090.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kiss Me Delicious 50 ml</div><div class="price">R$ 114,90</div><button class="buy" onclick="addToCart('Kiss Me Delicious 50 ml','114,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="091"><span class="product-number">091</span><img alt="Lyra Joy 75 ml" src="produtos/091.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Lyra Joy 75 ml</div><div class="price">R$ 179,90</div><button class="buy" onclick="addToCart('Lyra Joy 75 ml','179,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="092"><span class="product-number">092</span><img alt="Diva Esplêndida 100 ml" src="produtos/092.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Diva Esplêndida 100 ml</div><div class="price">R$ 149,90</div><button class="buy" onclick="addToCart('Diva Esplêndida 100 ml','149,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="093"><span class="product-number">093</span><img alt="Kiss Me Rosa Marcante 50 ml" src="produtos/093.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Kiss Me Rosa Marcante 50 ml</div><div class="price">R$ 114,90</div><button class="buy" onclick="addToCart('Kiss Me Rosa Marcante 50 ml','114,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="094"><span class="product-number">094</span><img alt="Spray Perfumado Instance Frutas Vermelhas 200 ml" src="produtos/094.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Spray Perfumado Instance Frutas Vermelhas 200 ml</div><div class="price">R$ 74,99</div><button class="buy" onclick="addToCart('Spray Perfumado Instance Frutas Vermelhas 200 ml','74,99',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="095"><span class="product-number">095</span><img alt="Diva Absoluta 100 ml" src="produtos/095.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Diva Absoluta 100 ml</div><div class="price">R$ 129,90</div><button class="buy" onclick="addToCart('Diva Absoluta 100 ml','129,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="096"><span class="product-number">096</span><img alt="La Victorie Eau de Parfum 75 ml" src="produtos/096.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">La Victorie Eau de Parfum 75 ml</div><div class="price">R$ 269,90</div><button class="buy" onclick="addToCart('La Victorie Eau de Parfum 75 ml','269,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="097"><span class="product-number">097</span><img alt="Creme Hidratante Corporal Liz D’Essence 250 g" src="produtos/097.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Creme Hidratante Corporal Liz D’Essence 250 g</div><div class="price">R$ 84,90</div><button class="buy" onclick="addToCart('Creme Hidratante Corporal Liz D’Essence 250 g','84,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="098"><span class="product-number">098</span><img alt="Eudora Eau de Parfum 75 ml" src="produtos/098.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Eau de Parfum 75 ml</div><div class="price">R$ 244,90</div><button class="buy" onclick="addToCart('Eudora Eau de Parfum 75 ml','244,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="099"><span class="offer-badge">OFERTA</span><span class="product-number">099</span><img alt="Body Spray Desodorante Quasar Blue 100ml" src="produtos/099.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Quasar Blue 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Quasar Blue 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="100"><span class="offer-badge">OFERTA</span><span class="product-number">100</span><img alt="Body Spray Desodorante Floratta My Blue 100ml" src="produtos/100.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Floratta My Blue 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Floratta My Blue 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="101"><span class="offer-badge">OFERTA</span><span class="product-number">101</span><img alt="Body Spray Desodorante Egeo Dolce 100ml" src="produtos/101.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Egeo Dolce 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Egeo Dolce 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="102"><span class="offer-badge">OFERTA</span><span class="product-number">102</span><img alt="Desodorante Body Spray Club 6 100ml" src="produtos/102.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Desodorante Body Spray Club 6 100ml</div><div class="price">R$ 47,99</div><button class="buy" onclick="addToCart('Desodorante Body Spray Club 6 100ml','47,99',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="103"><span class="offer-badge">OFERTA</span><span class="product-number">103</span><img alt="Body Spray Desodorante Floratta Red 100ml" src="produtos/103.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Floratta Red 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Floratta Red 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="104"><span class="offer-badge">OFERTA</span><span class="product-number">104</span><img alt="Body Spray Desodorante Arbo 100ml" src="produtos/104.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Arbo 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Arbo 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="105"><span class="offer-badge">OFERTA</span><span class="product-number">105</span><img alt="Desodorante Body Spray Boticollection Portinari 100ml" src="produtos/105.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Desodorante Body Spray Boticollection Portinari 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Desodorante Body Spray Boticollection Portinari 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="106"><span class="product-number">106</span><img alt="Splash Desodorante Colônia Lily 200ml" src="produtos/106.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Splash Desodorante Colônia Lily 200ml</div><div class="price">R$ 124,90</div><button class="buy" onclick="addToCart('Splash Desodorante Colônia Lily 200ml','124,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="107"><span class="offer-badge">OFERTA</span><span class="product-number">107</span><img alt="Body Spray Desodorante Glamour 100ml" src="produtos/107.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante Glamour 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante Glamour 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="108"><span class="offer-badge">OFERTA</span><span class="product-number">108</span><img alt="Body Spray Desodorante L’Eau De Lily Blanche 100ml" src="produtos/108.jpg"/><div class="info"><div class="tag">Boticário</div><div class="name">Body Spray Desodorante L’Eau De Lily Blanche 100ml</div><div class="price">R$ 52,90</div><button class="buy" onclick="addToCart('Body Spray Desodorante L’Eau De Lily Blanche 100ml','52,90',this.closest('.card').querySelector('img').src,this)">Adicionar à sacola</button></div></article>
+
+
+
+
+
+
+
+
+<article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="109"><span class="offer-badge">OFERTA</span><span class="product-number">109</span><img alt="Loção Hidratante Desodorante Corporal Cuide-Se Bem Amoruda 200 ml" src="produtos/129.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Hidratante Desodorante Corporal Cuide-Se Bem Amoruda 200 ml</div><div class="price">R$ 56,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="110"><span class="product-number">110</span><img alt="Loção Desodorante Hidratante Cuide-Se Bem Boa Noite 400 ml" src="produtos/130.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Desodorante Hidratante Cuide-Se Bem Boa Noite 400 ml</div><div class="price">R$ 87,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="111"><span class="offer-badge">OFERTA</span><span class="product-number">111</span><img alt="Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite 200 ml" src="produtos/131.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite 200 ml</div><div class="price">R$ 56,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="112"><span class="offer-badge">OFERTA</span><span class="product-number">112</span><img alt="Sabonetes Cuide-Se Bem Rosa e Algodão 4x80 g Cada" src="produtos/132.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Sabonetes Cuide-Se Bem Rosa e Algodão 4x80 g Cada</div><div class="price">R$ 38,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="113"><span class="product-number">113</span><img alt="Kit Presente Cuide-Se Bem Nuvem (2 itens)" src="produtos/133.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Kit Presente Cuide-Se Bem Nuvem (2 itens)</div><div class="price">R$ 69,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="114"><span class="offer-badge">OFERTA</span><span class="product-number">114</span><img alt="Kit Presente Cuide-Se Bem Obrigadx (2 itens)" src="produtos/134.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Kit Presente Cuide-Se Bem Obrigadx (2 itens)</div><div class="price">R$ 54,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="115"><span class="product-number">115</span><img alt="Loção Hidratante Desodorante Corporal Cuide-Se Bem Lavandinha 400 ml" src="produtos/135.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Loção Hidratante Desodorante Corporal Cuide-Se Bem Lavandinha 400 ml</div><div class="price">R$ 87,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="116"><span class="offer-badge">OFERTA</span><span class="product-number">116</span><img alt="Sabonete Em Barra Cuide-Bem Deleite 4x80 g" src="produtos/136.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Sabonete Em Barra Cuide-Bem Deleite 4x80 g</div><div class="price">R$ 38,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="true" data-product-number="117"><span class="offer-badge">OFERTA</span><span class="product-number">117</span><img alt="Sabonete Em Barra Cuide-Se Bem Nuvem 4x80 g" src="produtos/137.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Sabonete Em Barra Cuide-Se Bem Nuvem 4x80 g</div><div class="price">R$ 38,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="118"><span class="product-number">118</span><img alt="Coffee Addictive Oriental Aromático Desodorante Colônia 100 ml" src="produtos/138.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Coffee Addictive Oriental Aromático Desodorante Colônia 100 ml</div><div class="price">R$ 179,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="119"><span class="product-number">119</span><img alt="Coffee Woman Unique Floriental Gourmand Desodorante Colônia 100 ml" src="produtos/139.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Coffee Woman Unique Floriental Gourmand Desodorante Colônia 100 ml</div><div class="price">R$ 229,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="120"><span class="product-number">120</span><img alt="Coffee Man Duo Fougère Ambarado Desodorante Colônia 100 ml" src="produtos/140.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Coffee Man Duo Fougère Ambarado Desodorante Colônia 100 ml</div><div class="price">R$ 229,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="121"><span class="product-number">121</span><img alt="O.U.I Scapin 245 Intense Eau de Parfum 75 ml" src="produtos/141.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">O.U.I Scapin 245 Intense Eau de Parfum 75 ml</div><div class="price">R$ 394,00</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="122"><span class="product-number">122</span><img alt="Magnific Violet Dahlia Desodorante Colônia 75 ml" src="produtos/142.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Magnific Violet Dahlia Desodorante Colônia 75 ml</div><div class="price">R$ 144,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="123"><span class="product-number">123</span><img alt="O.U.I Iconique 001 Intense Eau de Parfum 75 ml" src="produtos/143.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">O.U.I Iconique 001 Intense Eau de Parfum 75 ml</div><div class="price">R$ 394,00</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="124"><span class="product-number">124</span><img alt="Cuide-Se Bem Sabonete em Barra Pessegura 4x80 g" src="produtos/144.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Cuide-Se Bem Sabonete em Barra Pessegura 4x80 g</div><div class="price">R$ 38,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="125"><span class="product-number">125</span><img alt="Sabonete em Barra Cuide-Bem Deleite 2x80 g" src="produtos/145.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Sabonete em Barra Cuide-Bem Deleite 2x80 g</div><div class="price">R$ 24,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="126"><span class="product-number">126</span><img alt="Club 6 Voyage Desodorante Colônia 95 ml" src="produtos/146.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Club 6 Voyage Desodorante Colônia 95 ml</div><div class="price">R$ 169,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="127"><span class="product-number">127</span><img alt="Sabonetes Sortidos Cuide-Se Bem 4x80 g cada" src="produtos/147.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Sabonetes Sortidos Cuide-Se Bem 4x80 g cada</div><div class="price">R$ 38,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="128"><span class="product-number">128</span><img alt="Glamour Midnight Desodorante Colônia 75 ml" src="produtos/148.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Glamour Midnight Desodorante Colônia 75 ml</div><div class="price">R$ 199,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="129"><span class="product-number">129</span><img alt="Kit Presente Floratta Blue: Desodorante Colônia 75 ml + Loção Corporal 200 ml + Creme" src="produtos/149.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">Kit Presente Floratta Blue: Desodorante Colônia 75 ml + Loção Corporal 200 ml + Creme</div><div class="price">R$ 254,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="130"><span class="product-number">130</span><img alt="Presente Diva Mirage Natal 2026" src="produtos/150.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Presente Diva Mirage Natal 2026</div><div class="price">R$ 212,89</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="131"><span class="product-number">131</span><img alt="Combo Siàge Resistência Antiqueda 02" src="produtos/151.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Combo Siàge Resistência Antiqueda 02</div><div class="price">R$ 238,97</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="132"><span class="product-number">132</span><img alt="Tônico Capilar Siàge Acelera O Crescimento 65 ml" src="produtos/152.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Tônico Capilar Siàge Acelera O Crescimento 65 ml</div><div class="price">R$ 77,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="133"><span class="product-number">133</span><img alt="Máscara Capilar Siàge Volume Imediato 250 g" src="produtos/153.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Máscara Capilar Siàge Volume Imediato 250 g</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="134"><span class="product-number">134</span><img alt="Máscara Capilar Siàge Acelera O Crescimento 250 g" src="produtos/154.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Máscara Capilar Siàge Acelera O Crescimento 250 g</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="135"><span class="product-number">135</span><img alt="Shampoo Siàge Volume Imediato 250 ml" src="produtos/155.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Volume Imediato 250 ml</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="136"><span class="product-number">136</span><img alt="Condicionador Siàge Acelera O Crescimento 200 ml" src="produtos/156.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Condicionador Siàge Acelera O Crescimento 200 ml</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="137"><span class="product-number">137</span><img alt="Máscara Balm Preenchedora Siàge Resgate Imediato 250 g" src="produtos/157.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Máscara Balm Preenchedora Siàge Resgate Imediato 250 g</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="138"><span class="product-number">138</span><img alt="Shampoo Siàge Cica-Therapy 250ML" src="produtos/158.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Cica-Therapy 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="139"><span class="product-number">139</span><img alt="Eudora Siàge Cica Therapy - Máscara Capilar 250G" src="produtos/159.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Siàge Cica Therapy - Máscara Capilar 250G</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="140"><span class="product-number">140</span><img alt="Condicionador Siàge Cica-Therapy 200ML" src="produtos/160.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Condicionador Siàge Cica-Therapy 200ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="141"><span class="product-number">141</span><img alt="Condicionador Siàge Resgate Imediato 200ML" src="produtos/161.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Condicionador Siàge Resgate Imediato 200ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="142"><span class="product-number">142</span><img alt="Shampoo Siàge Resgate Imediato 250ML" src="produtos/162.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Resgate Imediato 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="143"><span class="product-number">143</span><img alt="Máscara Capilar Concentrada Siàge Nutri Acid.Complex 250G" src="produtos/163.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Máscara Capilar Concentrada Siàge Nutri Acid.Complex 250G</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="144"><span class="product-number">144</span><img alt="Shampoo Siàge Acelera O Crescimento 250ML" src="produtos/164.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Acelera O Crescimento 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="145"><span class="product-number">145</span><img alt="Siàge Condicionador Hair-Plastia 200ML" src="produtos/165.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Siàge Condicionador Hair-Plastia 200ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="146"><span class="product-number">146</span><img alt="Siàge Shampoo Hair-Plastia 250ML" src="produtos/166.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Siàge Shampoo Hair-Plastia 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article>
+<article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="147"><span class="product-number">147</span><img alt="Shampoo Siàge Nutri Acid.Complex 250ML" src="produtos/167.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Nutri Acid.Complex 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="148"><span class="product-number">148</span><img alt="Eudora Siàge Hair-Plastia Máscara Capilar 250G" src="produtos/168.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Siàge Hair-Plastia Máscara Capilar 250G</div><div class="price">R$ 62,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="149"><span class="product-number">149</span><img alt="Condicionador Siàge Nutri Rosé 200ML" src="produtos/169.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Condicionador Siàge Nutri Rosé 200ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="150"><span class="product-number">150</span><img alt="Shampoo Siàge Nutri Rosé 250ML" src="produtos/170.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Nutri Rosé 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="151"><span class="product-number">151</span><img alt="Shampoo Siàge Anti Oleosidade Micelar 250ML" src="produtos/171.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Shampoo Siàge Anti Oleosidade Micelar 250ML</div><div class="price">R$ 49,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="152"><span class="product-number">152</span><img alt="Leave-In Siàge Hidratação Micelar 100ML" src="produtos/172.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Leave-In Siàge Hidratação Micelar 100ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="153"><span class="product-number">153</span><img alt="Máscara Capilar Siàge Hidratação Micelar 250G" src="produtos/173.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Máscara Capilar Siàge Hidratação Micelar 250G</div><div class="price">R$ 74,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="154"><span class="product-number">154</span><img alt="Condicionador Siàge Hidratação Micelar 200ML" src="produtos/174.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Condicionador Siàge Hidratação Micelar 200ML</div><div class="price">R$ 52,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="eudora" data-featured="false" data-offer="false" data-product-number="155"><span class="product-number">155</span><img alt="Eudora Instance Cereja e Amêndoas - Sabonete Vegetal em Barra Perfumado 4x80G" src="produtos/175.jpg"/><div class="info"><div class="tag">Eudora</div><div class="name">Eudora Instance Cereja e Amêndoas - Sabonete Vegetal em Barra Perfumado 4x80G</div><div class="price">R$ 34,99</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="156"><span class="product-number">156</span><img alt="The Blend Cardamom Eau De Parfum 100ML" src="produtos/176.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">The Blend Cardamom Eau De Parfum 100ML</div><div class="price">R$ 379,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article><article class="card" data-brand="boticario" data-featured="false" data-offer="false" data-product-number="157"><span class="product-number">157</span><img alt="The Blend Bourbon Eau De Parfum 100ML" src="produtos/177.jpg"/><div class="info"><div class="tag">O Boticário</div><div class="name">The Blend Bourbon Eau De Parfum 100ML</div><div class="price">R$ 379,90</div><button class="buy" type="button">Adicionar à sacola</button></div></article></div></main><button aria-label="Abrir sacola" class="cart-float" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></button><div class="cart-overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="cart-panel"><div class="cart-head"><h2>Minha sacola</h2><button class="cart-close" onclick="closeCart()">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-foot"><div class="cart-total"><span>Total</span><span id="cartTotal">R$ 0,00</span></div>
+<div class="cart-clear-row"><button aria-label="Esvaziar sacola" class="cart-clear" onclick="clearCart()" type="button">🗑️ Esvaziar sacola</button></div><button class="checkout" onclick="checkout()">Finalizar pelo WhatsApp</button></div></aside></div><script>
+const WHATSAPP="5596991853605";
+const CART_STORAGE_KEY="juliana_cart_v1";
+let cart=[];
+try{const saved=localStorage.getItem(CART_STORAGE_KEY);if(saved){const parsed=JSON.parse(saved);if(Array.isArray(parsed))cart=parsed}}catch(e){cart=[]}
+function saveCart(){try{localStorage.setItem(CART_STORAGE_KEY,JSON.stringify(cart))}catch(e){}}
+function moneyToNumber(v){const s=String(v??"").trim(); if(!s)return 0; const cleaned=s.replace(/[^0-9,.-]/g,"").replace(/\.(?=\d{3}(?:\D|$))/g,"").replace(",","."); const n=parseFloat(cleaned); return Number.isFinite(n)?n:0}function money(v){return Number(v).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}function repairCartPrices(){if(!Array.isArray(cart)||!cart.length)return;document.querySelectorAll(".card").forEach(function(card){const name=card.querySelector(".name"),price=card.querySelector(".price");if(!name||!price)return;const item=cart.find(x=>x.product===name.textContent.trim());if(item&&(!Number.isFinite(Number(item.price))||Number(item.price)<=0)){item.price=moneyToNumber(price.textContent)}});saveCart()}function addToCart(product,price,image,button){const parsedPrice=moneyToNumber(price);const item=cart.find(x=>x.product===product);if(item){item.qty++;if(!Number.isFinite(Number(item.price))||Number(item.price)<=0)item.price=parsedPrice}else cart.push({product,price:parsedPrice,qty:1,image});renderCart();saveCart();openCart();if(button){const old=button.textContent;button.textContent="Adicionado ✓";setTimeout(()=>button.textContent=old,900)}}function renderCart(){repairCartPrices();const items=document.getElementById("cartItems"),count=document.getElementById("cartCount"),totalEl=document.getElementById("cartTotal");let n=0,t=0;cart.forEach(x=>{n+=x.qty;t+=x.price*x.qty});count.textContent=n;totalEl.textContent=money(t);if(!cart.length){items.innerHTML='<div class="empty">Minha sacola está vazio.</div>';return}items.innerHTML=cart.map((x,i)=>`<div class="cart-item"><img src="${x.image}" alt=""><div><h3>${x.product}</h3><p>${money(x.price)}</p><div class="qty"><button onclick="changeQty(${i},-1)">−</button><strong>${x.qty}</strong><button onclick="changeQty(${i},1)">+</button></div><button class="remove" onclick="removeItem(${i})">Remover</button></div><strong>${money(x.price*x.qty)}</strong></div>`).join("")}function changeQty(i,d){if(!cart[i])return;cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);saveCart();renderCart()}function removeItem(i){cart.splice(i,1);saveCart();renderCart()}function openCart(){const overlay=document.getElementById("cartOverlay");overlay.style.display="block";renderCart();if(!history.state||!history.state.julianaCartOpen){history.pushState({julianaCartOpen:true},"","#carrinho")}}
+function closeCart(){const overlay=document.getElementById("cartOverlay");overlay.style.display="none";if(history.state&&history.state.julianaCartOpen){history.back()}}
+window.addEventListener("popstate",()=>{document.getElementById("cartOverlay").style.display="none";renderCart()});
+window.addEventListener("pageshow",()=>renderCart());function checkout(){if(!cart.length){alert("Adicione algum produto à sacola.");return}let text="Olá, Juh Cosméticos! Quero fazer um pedido:%0A%0A",total=0;cart.forEach(x=>{total+=x.price*x.qty;text+=encodeURIComponent("• "+x.qty+"x "+x.product+" — "+money(x.price*x.qty))+"%0A"});text+="%0A"+encodeURIComponent("Total: "+money(total));window.open("https://wa.me/"+WHATSAPP+"?text="+text,"_blank")}renderCart();
+let activeBrand="todos";function filterProducts(brand){activeBrand=brand;const term=(document.getElementById("searchInput").value||"").toLowerCase().trim();document.querySelectorAll(".card").forEach(c=>{const brandOk=brand==="todos"||c.dataset.brand===brand;const textOk=!term||c.textContent.toLowerCase().includes(term);c.style.display=(brandOk&&textOk)?"":"none"})}function normalizeSearchText(text){
+  return (text||"").toString().normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+}
+function searchProducts(){
+  const term=normalizeSearchText(document.getElementById("searchInput").value);
+  document.querySelectorAll(".card").forEach(c=>{
+    const brandOk=activeBrand==="todos"||c.dataset.brand===activeBrand;
+    const number=(c.querySelector(".product-number")?.textContent||"");
+    const name=(c.querySelector("img")?.alt||"")+" "+c.textContent+" "+number;
+    const textOk=!term||normalizeSearchText(name).includes(term);
+    c.style.display=(brandOk&&textOk)?"":"none";
+  });
+}
+document.addEventListener("DOMContentLoaded",renderCart);
+</script>
+<div aria-hidden="true" class="image-lightbox" id="imageLightbox">
+<button aria-label="Fechar" class="close" type="button">×</button>
+<img alt="Imagem ampliada do produto" id="lightboxImage"/>
+<div class="lightbox-caption" id="lightboxCaption"></div>
+<button class="lightbox-cart-btn" id="lightboxCartBtn" type="button">🛒 Colocar na sacola</button>
+</div>
+<script>
+(function(){
+  const box=document.getElementById('imageLightbox');
+  const big=document.getElementById('lightboxImage');
+  const caption=document.getElementById('lightboxCaption');
+  const close=box.querySelector('.close');
+  const cartBtn=document.getElementById('lightboxCartBtn');
+  let selectedCard=null;
+
+  document.addEventListener('click',function(e){
+    const img=e.target.closest('.card img');
+    if(!img) return;
+    selectedCard=img.closest('.card');
+    big.src=img.currentSrc || img.src;
+    big.alt=img.alt || 'Imagem ampliada do produto';
+    caption.textContent=img.alt || '';
+    cartBtn.textContent='🛒 Colocar na sacola';
+    box.classList.add('open');
+    box.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  });
+
+  function closeLightbox(){
+    box.classList.remove('open');
+    box.setAttribute('aria-hidden','true');
+    big.removeAttribute('src');
+    caption.textContent='';
+    document.body.style.overflow='';
+  }
+  cartBtn.addEventListener('click',function(){
+    if(!selectedCard) return;
+    const btn=selectedCard.querySelector('.buy');
+    if(!btn) return;
+    btn.click();
+    cartBtn.textContent='✓ Adicionado à sacola';
+    setTimeout(()=>{
+      closeLightbox();
+      cartBtn.textContent='🛒 Colocar na sacola';
+    },700);
+  });
+  close.addEventListener('click',closeLightbox);
+  box.addEventListener('click',function(e){
+    if(e.target===box) closeLightbox();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape' && box.classList.contains('open')) closeLightbox();
+  });
+})();
+</script>
+<script id="cart-clear-function">
+function clearCart(){
+  if(!Array.isArray(cart) || cart.length===0) return;
+  if(!confirm('Esvaziar todo o carrinho?')) return;
+  cart=[];
+  saveCart();
+  renderCart();
+}
+</script>
+<script id="share-product-feature">
+(function(){
+  const STORE_URL = 'https://igorfelyx031-oss.github.io/loja-juliana/';
+
+  function getCardData(card){
+    const number = (card.querySelector('.product-number')?.textContent || '').trim();
+    const name = (card.querySelector('.name')?.textContent || card.querySelector('img')?.alt || '').trim();
+    const price = (card.querySelector('.price')?.textContent || '').trim();
+    return {number, name, price};
+  }
+
+  function canonicalUrl(number){
+    return STORE_URL + '#produto-' + encodeURIComponent(number);
+  }
+
+  function toast(message){
+    document.querySelector('.share-toast')?.remove();
+    const el = document.createElement('div');
+    el.className = 'share-toast';
+    el.textContent = message;
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(), 2200);
+  }
+
+  async function shareCard(card){
+    const {number, name, price} = getCardData(card);
+    if(!name) return;
+
+    const url = canonicalUrl(number);
+    const text = `JUH COSMÉTICOS — Beleza & Cuidados\n\n${name}\n${price}\n\nConfira o produto:`;
+
+    try{
+      if(navigator.share){
+        await navigator.share({title:name, text, url});
+      }else if(navigator.clipboard){
+        await navigator.clipboard.writeText(text + '\n' + url);
+        toast('Link e produto copiados ✓');
+      }else{
+        window.prompt('Copie o link do produto:', url);
+      }
+    }catch(err){
+      // Cancelamento do menu de compartilhamento não deve causar erro na página.
+      if(err && err.name !== 'AbortError'){
+        try{
+          await navigator.clipboard.writeText(text + '\n' + url);
+          toast('Link e produto copiados ✓');
+        }catch(e){
+          window.prompt('Copie o link do produto:', url);
+        }
+      }
+    }
+  }
+
+  function addShareButtons(){
+    document.querySelectorAll('.card').forEach(card=>{
+      if(card.querySelector('.share-product')) return;
+      const info = card.querySelector('.info');
+      if(!info) return;
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'share-product';
+      button.textContent = '📤 Compartilhar';
+      button.setAttribute('aria-label','Compartilhar este produto');
+      button.addEventListener('click', e=>{
+        e.preventDefault();
+        e.stopPropagation();
+        shareCard(card);
+      });
+      info.appendChild(button);
+    });
+  }
+
+  function openSharedProduct(){
+    const match = location.hash.match(/^#produto-(.+)$/);
+    if(!match) return;
+    const number = decodeURIComponent(match[1]);
+    const card = [...document.querySelectorAll('.card')].find(c =>
+      (c.querySelector('.product-number')?.textContent || '').trim() === number
+    );
+    if(!card) return;
+    setTimeout(()=>{
+      card.scrollIntoView({behavior:'smooth', block:'center'});
+      card.classList.add('share-highlight');
+      setTimeout(()=>card.classList.remove('share-highlight'), 2600);
+    }, 450);
+  }
+
+  function setup(){
+    addShareButtons();
+    openSharedProduct();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', setup);
+  }else{
+    setup();
+  }
+  window.addEventListener('hashchange', openSharedProduct);
+})();
+</script>
+<script id="favorites-feature">
+(function(){
+  const KEY='juh_favorites_v1';
+  let favorites=[];
+  let favoritesOnly=false;
+  try{const saved=localStorage.getItem(KEY); const parsed=saved?JSON.parse(saved):[]; if(Array.isArray(parsed)) favorites=parsed.map(String)}catch(e){favorites=[]}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(favorites))}catch(e){}}
+  function getNum(card){return String(card.querySelector('.product-number')?.textContent||'').trim()}
+  function isFav(card){return favorites.includes(getNum(card))}
+  function updateHearts(){
+    document.querySelectorAll('.card').forEach(card=>{
+      let b=card.querySelector('.favorite-btn');
+      if(!b){b=document.createElement('button');b.type='button';b.className='favorite-btn';b.setAttribute('aria-label','Adicionar aos favoritos');card.appendChild(b);
+        b.addEventListener('click',function(e){
+          e.preventDefault(); e.stopPropagation();
+          const n=getNum(card); if(!n)return;
+          if(isFav(card)) favorites=favorites.filter(x=>x!==n); else favorites.push(n);
+          save(); updateHearts(); applyFavorites();
+        });
+      }
+      const active=isFav(card); b.textContent=active?'♥':'♡'; b.classList.toggle('active',active); b.setAttribute('aria-label',active?'Remover dos favoritos':'Adicionar aos favoritos');
+    });
+    const toggle=document.getElementById('favoritesToggle');
+    if(toggle){toggle.textContent='♥ Favoritos'+(favorites.length?' ('+favorites.length+')':'');toggle.classList.toggle('active',favoritesOnly)}
+  }
+  function applyFavorites(){
+    document.querySelectorAll('.card').forEach(card=>{
+      if(favoritesOnly) card.style.display=isFav(card)?'':'none';
+    });
+    if(favoritesOnly && !favorites.length){
+      let empty=document.getElementById('favoritesEmpty');
+      if(!empty){empty=document.createElement('div');empty.id='favoritesEmpty';empty.className='favorites-empty';empty.innerHTML='<strong>♡ Seus favoritos estão vazios</strong><span>Toque no coração dos produtos que você gostar.</span>';document.querySelector('main.wrap')?.appendChild(empty)}
+    }else document.getElementById('favoritesEmpty')?.remove();
+  }
+  function toggleFavorites(){
+    favoritesOnly=!favoritesOnly;
+    if(!favoritesOnly){document.getElementById('favoritesEmpty')?.remove(); if(typeof searchProducts==='function') searchProducts();}
+    else {document.querySelectorAll('.card').forEach(c=>c.style.display=isFav(c)?'':'none'); applyFavorites();}
+    updateHearts();
+  }
+  function setup(){
+    const nav=document.querySelector('header nav');
+    if(nav && !document.getElementById('favoritesToggle')){
+      const b=document.createElement('button'); b.id='favoritesToggle'; b.type='button'; b.className='favorites-toggle'; b.addEventListener('click',toggleFavorites); nav.appendChild(b);
+    }
+    updateHearts();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup); else setup();
+  window.juhRefreshFavorites=updateHearts;
+})();
+</script>
+<script>
+(function(){
+  function updateProductCount(){
+    var count = document.querySelectorAll('.card').length;
+    var el = document.getElementById('productCount');
+    if (el) el.textContent = count;
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateProductCount);
+  } else {
+    updateProductCount();
+  }
+  var observer = new MutationObserver(updateProductCount);
+  function startObserver(){
+    var grid = document.querySelector('.grid');
+    if (grid) observer.observe(grid, {childList:true, subtree:true});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startObserver);
+  else startObserver();
+})();
+</script>
+<script id="categories-feature">
+(function(){
+  let activeCategory='todos';
+  const categoryNames={
+    'todos':'Todos',
+    'perfumes':'Perfumes',
+    'body-splash':'Body Splash',
+    'hidratantes':'Hidratantes',
+    'desodorantes':'Desodorantes',
+    'sabonetes':'Sabonetes',
+    'kits':'Kits',
+    'cuidados-corporais':'Cuidados Corporais'
+  };
+  function categoryForCard(card){
+    const text=((card.querySelector('.name')?.textContent||'')+' '+(card.querySelector('img')?.alt||'')).toLowerCase();
+    if(/\bkit\b|combo|calend[aá]rio do advento/.test(text)) return 'kits';
+    if(/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash';
+    if(/sabonete/.test(text)) return 'sabonetes';
+    if(/body spray|antitranspirante|desodorante body spray|spray [íi]ntimo/.test(text)) return 'desodorantes';
+    if(/hidratante|hidratantes|lo[cç][aã]o|creme relaxante|sufl[eê] hidratante/.test(text)) return 'hidratantes';
+    if(/desodorante col[oô]nia|eau de parfum|perfume|col[oô]nia/.test(text)) return 'perfumes';
+    return 'cuidados-corporais';
+  }
+  function normalize(text){return (text||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+  function isFavorite(card){return !!card.querySelector('.favorite-btn.active')}
+  function applyAllFilters(){
+    const term=normalize(document.getElementById('searchInput')?.value||'');
+    const brand=window.juhActiveBrand||'todos';
+    const favoritesOnly=!!document.querySelector('#favoritesToggle.active');
+    document.querySelectorAll('.card').forEach(card=>{
+      const brandOk=brand==='todos'||card.dataset.brand===brand;
+      const cat=categoryForCard(card);
+      card.dataset.category=cat;
+      let categoryOk=activeCategory==='todos'||cat===activeCategory;
+      if(activeCategory==='destaques') categoryOk=card.dataset.featured==='true';
+      if(activeCategory==='ofertas') categoryOk=card.dataset.offer==='true';
+      const number=card.querySelector('.product-number')?.textContent||'';
+      const name=card.querySelector('.name')?.textContent||'';
+      const alt=card.querySelector('img')?.alt||'';
+      const textOk=!term||normalize(name+' '+alt+' '+number).includes(term);
+      const favoriteOk=!favoritesOnly||isFavorite(card);
+      card.style.display=(brandOk&&categoryOk&&textOk&&favoriteOk)?'':'none';
+    });
+  }
+  // Mantém a marca atual disponível para o filtro de categorias.
+  const originalFilter=window.filterProducts;
+  window.filterProducts=function(brand){
+    window.juhActiveBrand=brand;
+    if(typeof originalFilter==='function') originalFilter(brand);
+    applyAllFilters();
+  };
+  window.searchProducts=function(){applyAllFilters()};
+  function setup(){
+    document.querySelectorAll('.card').forEach(card=>card.dataset.category=categoryForCard(card));
+    document.querySelectorAll('#categoryBar button').forEach(btn=>{
+      btn.addEventListener('click',function(){
+        activeCategory=this.dataset.category||'todos';
+        document.querySelectorAll('#categoryBar button').forEach(b=>b.classList.toggle('active',b===this));
+        applyAllFilters();
+      });
+    });
+    const fav=document.getElementById('favoritesToggle');
+    if(fav) fav.addEventListener('click',()=>setTimeout(applyAllFilters,30));
+    applyAllFilters();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup); else setup();
+  window.juhCategoryForCard=categoryForCard;
+})();
+</script>
+<script>
+(function(){
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('./sw.js').catch(function(){});
+    });
+  }
+  var deferredPrompt = null;
+  var bar = document.getElementById('pwaInstallBar');
+  var btn = document.getElementById('pwaInstallBtn');
+  var close = document.getElementById('pwaInstallClose');
+  function showBar(){ if(bar && !localStorage.getItem('juhPwaInstallDismissed')) bar.style.display='flex'; }
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault(); deferredPrompt=e; showBar();
+  });
+  if (btn) btn.addEventListener('click', async function(){
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      try { await deferredPrompt.userChoice; } catch(e) {}
+      deferredPrompt=null;
+      if(bar) bar.style.display='none';
+      return;
+    }
+    var isiOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+    if(isiOS && bar){
+      bar.querySelector('.pwa-text').textContent='No iPhone/iPad: toque em Compartilhar e depois em “Adicionar à Tela de Início”.';
+      btn.style.display='none';
+    }
+  });
+  if (close) close.addEventListener('click', function(){
+    localStorage.setItem('juhPwaInstallDismissed','1');
+    if(bar) bar.style.display='none';
+  });
+  window.addEventListener('appinstalled', function(){
+    if(bar) bar.style.display='none';
+    deferredPrompt=null;
+  });
+})();
+</script>
+</body></html>
