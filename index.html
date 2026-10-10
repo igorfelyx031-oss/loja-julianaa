@@ -1,86 +1,259 @@
-const bancoDeDadosProdutos = [
-  { id: "001", tag: "Destaque", nome: "Kit Presente Natal Eudora Kiss Me Cabernet (2 itens)", marca: "Eudora", preco: 129.99 },
-  { id: "002", tag: null, nome: "Eudora Bad Intention Desodorante Colônia 100 ml", marca: "Eudora", preco: 169.90 },
-  { id: "003", tag: null, nome: "Kit Presente Natal Egeo Dolce (2 itens)", marca: "O Boticário", preco: 174.90 },
-  { id: "004", tag: null, nome: "L'Eau de Lily Blanche Desodorante Colônia 75 ml", marca: "O Boticário", preco: 239.90 },
-  { id: "005", tag: null, nome: "Body Splash Desodorante Colônia Cereja de Fases 200 ml", marca: "O Boticário", preco: 94.90 },
-  { id: "006", tag: "Mais vendido", nome: "Floratta Red Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "007", tag: null, nome: "Creme Acetinado Hidratante Desodorante Corporal Lily 250 g", marca: "O Boticário", preco: 149.90 },
-  { id: "008", tag: null, nome: "Kit Presente Natal Instance Baunilha Glow (2 itens)", marca: "Eudora", preco: 99.90 },
-  { id: "009", tag: "Lançamento", nome: "Floratta Blue Crystal Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "010", tag: null, nome: "Kit Presente Natal Eudora Duo Body Sprays (2 itens)", marca: "Eudora", preco: 89.90 },
-  { id: "011", tag: null, nome: "Kit Presente Natal Impression For Man (2 itens)", marca: "Eudora", preco: 84.90 },
-  { id: "012", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Delicioso Chocolate 200 ml", marca: "O Boticário", preco: 94.90 },
-  { id: "013", tag: null, nome: "Creme Hidratante Desodorante Corporal Instance Baunilha Intensa 400 ml", marca: "Eudora", preco: 64.90 },
-  { id: "014", tag: null, nome: "Kit Presente Natal Her Code (2 itens) 2026", marca: "Eudora", preco: 299.90 },
-  { id: "015", tag: null, nome: "Combo Sh+Cond Hair-Plastia", marca: "Eudora", preco: 102.99 },
-  { id: "016", tag: null, nome: "Kit Presente Natal Club 6 Voyage (2 itens)", marca: "Eudora", preco: 179.90 },
-  { id: "017", tag: null, nome: "Colônia Infantil Toy Story Sophie Vaqueira Valente 100 ml", marca: "O Boticário", preco: 119.90 },
-  { id: "018", tag: "Oferta", nome: "Antitranspirante Roll-On Men 55 ml", marca: "O Boticário", preco: 29.90 },
-  { id: "019", tag: null, nome: "Loção Desodorante Hidratante Corporal Linda Irresistível 200 ml", marca: "O Boticário", preco: 69.90 },
-  { id: "020", tag: "Oferta", nome: "Desodorante Antitranspirante Roll-On Malbec 55 ml", marca: "O Boticário", preco: 29.90 },
-  { id: "021", tag: null, nome: "Creme Hidratante Desodorante Corporal Instance Âmbar Precioso 400 ml", marca: "Eudora", preco: 67.90 },
-  { id: "022", tag: null, nome: "Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite Caramelizado 400 ml", marca: "O Boticário", preco: 87.90 },
-  { id: "023", tag: null, nome: "Club 6 Intenso Desodorante Colônia 95 ml", marca: "Eudora", preco: 169.90 },
-  { id: "024", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Amoruda 200 ml", marca: "O Boticário", preco: 94.90 },
-  { id: "025", tag: null, nome: "Liz Flora Desodorante Colônia 100 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "026", tag: null, nome: "Magnific Rouge Camélia Desodorante Colônia 75 ml", marca: "Eudora", preco: 144.90 },
-  { id: "027", tag: null, nome: "Combo Floratta Blue Crystal 02", marca: "O Boticário", preco: 194.81 },
-  { id: "028", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200 ml", marca: "O Boticário", preco: 94.90 },
-  { id: "029", tag: "Oferta", nome: "Body Spray Desodorante Corporal Floratta Blue Crystal 100 ml", marca: "O Boticário", preco: 52.90 },
-  { id: "030", tag: null, nome: "Kit Presente Natal Siàge Nutri Rosé (3 itens)", marca: "Eudora", preco: 132.90 },
-  { id: "031", tag: null, nome: "L'Eau De Lily Desodorante Colônia 75 ml", marca: "O Boticário", preco: 239.90 },
-  { id: "032", tag: null, nome: "Kit Presente Natal Magnific Rouge Camélia (2 itens)", marca: "Eudora", preco: 159.90 },
-  { id: "033", tag: null, nome: "Loção Desodorante Hidratante Corporal Cuide-Se Bem Deleite 400 ml", marca: "O Boticário", preco: 87.90 },
-  { id: "034", tag: null, nome: "Suflê Hidratante Desodorante Corporal Egeo High 250 g", marca: "O Boticário", preco: 79.90 },
-  { id: "035", tag: null, nome: "Desodorante Colônia Velvet Sensual Intense 100 ml", marca: "Eudora", preco: 129.90 },
-  { id: "036", tag: null, nome: "Combo O.U.i Jardin de Grasse Rose Nat/26", marca: "O.U.i", preco: 318.01 },
-  { id: "037", tag: null, nome: "Pulse Desodorante Colônia 100 ml", marca: "Eudora", preco: 139.90 },
-  { id: "038", tag: null, nome: "Combo O.U.i Le Flaneur 020 Nat/26", marca: "O.U.i", preco: 478.00 },
-  { id: "039", tag: null, nome: "Floratta Fleur D'Éclipse Eau De Parfum 75 ml", marca: "O Boticário", preco: 229.90 },
-  { id: "040", tag: null, nome: "Floratta Red Passion Eau De Parfum 75 ml", marca: "O Boticário", preco: 229.90 },
-  { id: "041", tag: null, nome: "Floratta Romance de Verão Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "042", tag: null, nome: "Floratta My Blue Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "043", tag: null, nome: "Floratta Flores Secretas Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "044", tag: null, nome: "Floratta Red Blossom Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "045", tag: null, nome: "Floratta Rose Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "046", tag: null, nome: "Floratta Rose Bouquet Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "047", tag: "Oferta", nome: "Creme Hidratante Desodorante Corporal Floratta Blue 75 g", marca: "O Boticário", preco: 44.90 },
-  { id: "048", tag: null, nome: "Floratta Blue Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "049", tag: null, nome: "Combo Shampoo e Condicionador Nutri Rosé", marca: "Eudora", preco: 102.98 },
-  { id: "050", tag: null, nome: "Floratta Gold Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
-  { id: "051", tag: "Oferta", nome: "Club 6 Prestige Loção Desodorante Hidratante Corporal 150ML", marca: "Eudora", preco: 52.99 },
-  { id: "052", tag: null, nome: "O.U.I Loção Hidratante Desodorante Élégance Royale 115 400ML", marca: "O.U.I", preco: 134.00 },
-  { id: "053", tag: null, nome: "Club 6 Desodorante Colônia 95ML", marca: "Eudora", preco: 169.90 },
-  { id: "054", tag: null, nome: "Club 6 Exclusive Desodorante Colônia 95ML", marca: "Eudora", preco: 169.90 },
-  { id: "055", tag: null, nome: "Eudora Royal Desodorante Colônia Masculino 100ML", marca: "Eudora", preco: 149.99 },
-  { id: "056", tag: null, nome: "Eudora Royal Desodorante Colônia Feminino 100ML", marca: "Eudora", preco: 149.99 },
-  { id: "057", tag: null, nome: "Club 6 Desodorante Colônia 95ML", marca: "Eudora", preco: 169.90 },
-  { id: "058", tag: null, nome: "Eudora Pulse Intense Desodorante Colônia 100ML", marca: "Eudora", preco: 139.90 },
-  { id: "059", tag: null, nome: "Club 6 Spotlight Desodorante Colônia 95ML", marca: "Eudora", preco: 169.90 },
-  { id: "060", tag: null, nome: "Strong Intention Desodorante Colônia 100ML", marca: "Eudora", preco: 169.90 },
-  { id: "061", tag: null, nome: "Arbo Botanic Desodorante Colônia 100ML", marca: "O Boticário", preco: 184.90 },
-  { id: "062", tag: null, nome: "Pulse Desodorante Colônia Action 100ML", marca: "Eudora", preco: 139.90 },
-  { id: "063", tag: null, nome: "Arbo Atlântica Desodorante Colônia 100ML", marca: "O Boticário", preco: 189.90 },
-  { id: "064", tag: null, nome: "Uomini Desodorante Colônia 100ML", marca: "O Boticário", preco: 209.90 },
-  { id: "065", tag: null, nome: "Pulse Power Desodorante Colônia 100ML", marca: "Eudora", preco: 119.90 },
-  { id: "066", tag: null, nome: "Arbo Puro Desodorante Colônia 100ML", marca: "O Boticário", preco: 184.90 },
-  { id: "067", tag: null, nome: "Pulse Boost Desodorante Colônia 100ML", marca: "Eudora", preco: 119.90 },
-  { id: "068", tag: null, nome: "Bold Intention Desodorante Colônia 100ML", marca: "Eudora", preco: 169.90 },
-  { id: "069", tag: null, nome: "Intention/Man Des Col Close V2 100ML", marca: "Eudora", preco: 169.90 },
-  { id: "070", tag: null, nome: "Kiss Me Delicious 50 ml", marca: "Eudora", preco: 114.90 },
-  { id: "071", tag: null, nome: "Lyra Joy 75 ml", marca: "Eudora", preco: 179.90 },
-  { id: "072", tag: null, nome: "Diva Esplêndida 100 ml", marca: "Eudora", preco: 149.90 },
-  { id: "073", tag: null, nome: "Kiss Me Rosa Marcante 50 ml", marca: "Eudora", preco: 114.90 },
-  { id: "074", tag: null, nome: "Spray Perfumado Instance Frutas Vermelhas 200 ml", marca: "Eudora", preco: 74.99 },
-  { id: "075", tag: null, nome: "Diva Absoluta 100 ml", marca: "Eudora", preco: 129.90 },
-  { id: "076", tag: null, nome: "La Victorie Eau de Parfum 75 ml", marca: "Eudora", preco: 269.90 },
-  { id: "077", tag: null, nome: "Creme Hidratante Corporal Liz D'Essence 250 g", marca: "Eudora", preco: 84.90 },
-  { id: "078", tag: null, nome: "Eudora Eau de Parfum 75 ml", marca: "Eudora", preco: 244.90 },
-  { id: "079", tag: "Oferta", nome: "Body Spray Desodorante Quasar Blue 100ml", marca: "Boticário", preco: 52.90 },
-  { id: "080", tag: "Oferta", nome: "Body Spray Desodorante Floratta My Blue 100ml", marca: "Boticário", preco: 52.90 },
-  { id: "081", tag: "Oferta", nome: "Body Spray Desodorante Egeo Dolce 100ml", marca: "Boticário", preco: 52.90 },
-  { id: "082", tag: "Oferta", nome: "Desodorante Body Spray Club 6 100ml", marca: "Boticário", preco: 47.99 },
-  { id: "083", tag: "Oferta", nome: "Body Spray Desodorante Floratta Red 100ml", marca: "Boticário", preco: 52.90 },
-  { id: "084", tag: "Oferta", nome: "Body Spray Desodorante Arbo 100ml", marca: "Boticário", preco: 52.90 },
-  { id: "085", tag: "Oferta", nome: "Desodorante Body Spray Boticollection Portinari 100ml", marca: "Boticário", preco: 52.90 },
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juh Cosméticos — Beleza & Cuidados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fcf8f8;
+            color: #333;
+        }
+
+        /* Banner de instalação PWA/Celular */
+        .banner-instalar {
+            background-color: #f0e4e4;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0d0d0;
+        }
+
+        .fechar-banner {
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        header {
+            background-color: #7a1b41;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Seção de Filtros e Categorias */
+        .filtros-marcas, .filtros-categorias {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+        }
+
+        /* Esconder barra de rolagem mas manter a função arrastar no celular */
+        .filtros-marcas::-webkit-scrollbar, .filtros-categorias::-webkit-scrollbar {
+            display: none;
+        }
+
+        .btn-filtro {
+            background: white;
+            border: 1px solid #7a1b41;
+            color: #7a1b41;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-filtro.ativo {
+            background-color: #7a1b41;
+            color: white;
+        }
+
+        .info-loja {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #f0e4e4;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Grid de produtos */
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Estilização do Card de Produto */
+        .card-produto {
+            background: white;
+            border: 1px solid #f0e4e4;
+            border-radius: 8px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .tag-produto {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #7a1b41;
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .tag-produto.oferta {
+            background-color: #d32f2f;
+        }
+
+        .id-produto {
+            font-size: 0.75rem;
+            color: #999;
+            margin-bottom: 0.2rem;
+            align-self: flex-end;
+        }
+
+        .marca-produto {
+            font-size: 0.75rem;
+            color: #7a1b41;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .nome-produto {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.2rem;
+            margin-bottom: 0.8rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 3.6rem;
+        }
+
+        .preco-produto {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+        }
+
+        .btn-sacola {
+            background-color: #7a1b41;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-sacola:hover {
+            background-color: #5c1230;
+        }
+
+        .sem-produtos {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-instalar" id="bannerInstalar">
+        <span>📱 Quer salvar a JUH Cosméticos no seu celular como aplicativo?</span>
+        <span class="fechar-banner" onclick="document.getElementById('bannerInstalar').style.display='none'">×</span>
+    </div>
+
+    <header>
+        <h1>JUH Cosméticos — Beleza & Cuidados</h1>
+        <p>Beleza que combina com você ✨</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Filtros de Marcas -->
+        <div class="filtros-marcas">
+            <button class="btn-filtro ativo" onclick="filtrarMarca('Todos', this)">Todos</button>
+            <button class="btn-filtro" onclick="filtrarMarca('O Boticário', this)">O Boticário</button>
+            <button class="btn-filtro" onclick="filtrarMarca('Eudora', this)">Eudora</button>
+        </div>
+
+        <div class="info-loja">
+            🛍️ Monte sua sacola e finalize seu pedido pelo WhatsApp.
+        </div>
+
+        <!-- O Grid recebe os itens dinamicamente através do Script -->
+        <div class="grid-produtos" id="gridProdutos"></div>
+
+    </div>
+
+    <script>
+        const produtos = [
+          { id: "001", tag: "Destaque", nome: "Kit Presente Natal Eudora Kiss Me Cabernet (2 itens)", marca: "Eudora", preco: 129.99 },
+          { id: "002", tag: null, nome: "Eudora Bad Intention Desodorante Colônia 100 ml", marca: "Eudora", preco: 169.90 },
+          { id: "003", tag: null, nome: "Kit Presente Natal Egeo Dolce (2 itens)", marca: "O Boticário", preco: 174.90 },
+          { id: "004", tag: null, nome: "L'Eau de Lily Blanche Desodorante Colônia 75 ml", marca: "O Boticário", preco: 239.90 },
+          { id: "005", tag: null, nome: "Body Splash Desodorante Colônia Cereja de Fases 200 ml", marca: "O Boticário", preco: 94.90 },
+          { id: "006", tag: "Mais vendido", nome: "Floratta Red Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
+          { id: "007", tag: null, nome: "Creme Acetinado Hidratante Desodorante Corporal Lily 250 g", marca: "O Boticário", preco: 149.90 },
+          { id: "008", tag: null, nome: "Kit Presente Natal Instance Baunilha Glow (2 itens)", marca: "Eudora", preco: 99.90 },
+          { id: "009", tag: "Lançamento", nome: "Floratta Blue Crystal Desodorante Colônia 75 ml", marca: "O Boticário", preco: 174.90 },
+          { id: "010", tag: null, nome: "Kit Presente Natal Eudora Duo Body Sprays (2 itens)", marca: "Eudora", preco: 89.90 },
+          { id: "011", tag: null, nome: "Kit Presente Natal Impression For Man (2 itens)", marca: "Eudora", preco: 84.90 },
+          { id: "012", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Delicioso Chocolate 200 ml", marca: "O Boticário", preco: 94.90 },
+          { id: "013", tag: null, nome: "Creme Hidratante Desodorante Corporal Instance Baunilha Intensa 400 ml", marca: "Eudora", preco: 64.90 },
+          { id: "014", tag: null, nome: "Kit Presente Natal Her Code (2 itens) 2026", marca: "Eudora", preco: 299.90 },
+          { id: "015", tag: null, nome: "Combo Sh+Cond Hair-Plastia", marca: "Eudora", preco: 102.99 },
+          { id: "016", tag: null, nome: "Kit Presente Natal Club 6 Voyage (2 itens)", marca: "Eudora", preco: 179.90 },
+          { id: "017", tag: null, nome: "Colônia Infantil Toy Story Sophie Vaqueira Valente 100 ml", marca: "O Boticário", preco: 119.90 },
+          { id: "018", tag: "Oferta", nome: "Antitranspirante Roll-On Men 55 ml", marca: "O Boticário", preco: 29.90 },
+          { id: "019", tag: null, nome: "Loção Desodorante Hidratante Corporal Linda Irresistível 200 ml", marca: "O Boticário", preco: 69.90 },
+          { id: "020", tag: "Oferta", nome: "Desodorante Antitranspirante Roll-On Malbec 55 ml", marca: "O Boticário", preco: 29.90 },
+          { id: "021", tag: null, nome: "Creme Hidratante Desodorante Corporal Instance Âmbar Precioso 400 ml", marca: "Eudora", preco: 67.90 },
+          { id: "022", tag: null, nome: "Loção Hidratante Desodorante Corporal Cuide-Se Bem Deleite Caramelizado 400 ml", marca: "O Boticário", preco: 87.90 },
+          { id: "023", tag: null, nome: "Club 6 Intenso Desodorante Colônia 95 ml", marca: "Eudora", preco: 169.90 },
+          { id: "024", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Amoruda 200 ml", marca: "O Boticário", preco: 94.90 },
+          { id: "025", tag: null, nome: "Liz Flora Desodorante Colônia 100 ml", marca: "O Boticário", preco: 174.90 },
+          { id: "026", tag: null, nome: "Magnific Rouge Camélia Desodorante Colônia 75 ml", marca: "Eudora", preco: 144.90 },
+          { id: "027", tag: null, nome: "Combo Floratta Blue Crystal 02", marca: "O Boticário", preco: 194.81 },
+          { id: "028", tag: null, nome: "Body Splash Desodorante Colônia Cuide-Se Bem Boa Noite 200 ml", marca: "O Boticário", preco: 94.90 },
