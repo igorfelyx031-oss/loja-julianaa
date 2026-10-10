@@ -538,69 +538,74 @@ function clearCart(){
   else startObserver(); 
 })(); 
 </script> 
-<script id="categories-feature">
-(function(){
-  let activeCategory='todos';
-  let activeBrand='todos';
-  function normalize(text){return (text||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
-  function categoryForCard(card){
-    const text=normalize((card.querySelector('.name')?.textContent||'')+' '+(card.querySelector('img')?.alt||''));
-    if(/\bkit\b|combo|calendario do advento/.test(text)) return 'kits';
-    if(/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash';
-    if(/sabonete/.test(text)) return 'sabonetes';
-    if(/hidratante|hidratantes|locao|creme relaxante|sufle hidratante/.test(text)) return 'hidratantes';
-    if(/desodorante body spray|body spray|antitranspirante|spray intimo/.test(text)) return 'desodorantes';
-    if(/desodorante colonia|eau de parfum|perfume|colonia|parfum|eau de toilette/.test(text)) return 'perfumes';
-    return 'cuidados-corporais';
-  }
-  function isFavorite(card){return !!card.querySelector('.favorite-btn.active')}
-  function applyAllFilters(){
-    const input=document.getElementById('searchInput');
-    const term=normalize(input ? input.value : '');
-    const favoritesOnly=!!document.querySelector('#favoritesToggle.active');
-    document.querySelectorAll('.card').forEach(card=>{
-      const cat=categoryForCard(card);
-      card.dataset.category=cat;
-      const brandOk=activeBrand==='todos'||card.dataset.brand===activeBrand;
-      let categoryOk=activeCategory==='todos'||cat===activeCategory;
-      if(activeCategory==='destaques') categoryOk=card.dataset.featured==='true';
-      if(activeCategory==='ofertas') categoryOk=card.dataset.offer==='true';
-      const number=card.querySelector('.product-number')?.textContent||card.dataset.productNumber||'';
-      const name=card.querySelector('.name')?.textContent||'';
-      const alt=card.querySelector('img')?.alt||'';
-      const textOk=!term||normalize(name+' '+alt+' '+number+' '+(card.dataset.brand||'')).includes(term);
-      const favoriteOk=!favoritesOnly||isFavorite(card);
-      card.style.display=(brandOk&&categoryOk&&textOk&&favoriteOk)?'':'none';
-    });
-  }
-  // Unifica os filtros de marca, categoria e pesquisa para que não se sobreponham.
-  window.filterProducts=function(brand){
-    activeBrand=brand||'todos';
-    window.juhActiveBrand=activeBrand;
-    applyAllFilters();
-  };
-  window.searchProducts=applyAllFilters;
-  function setup(){
-    document.querySelectorAll('.card').forEach(card=>card.dataset.category=categoryForCard(card));
-    const bar=document.getElementById('categoryBar');
-    if(bar){
-      bar.addEventListener('click',function(event){
-        const btn=event.target.closest('button[data-category]');
-        if(!btn||!bar.contains(btn)) return;
-        activeCategory=btn.dataset.category||'todos';
-        bar.querySelectorAll('button[data-category]').forEach(b=>b.classList.toggle('active',b===btn));
-        applyAllFilters();
-      });
-    }
-    const fav=document.getElementById('favoritesToggle');
-    if(fav) fav.addEventListener('click',()=>setTimeout(applyAllFilters,30));
-    applyAllFilters();
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup,{once:true});
-  else setup();
-  window.juhCategoryForCard=categoryForCard;
-  window.juhApplyAllFilters=applyAllFilters;
-})();
+<script id="categories-feature"> 
+(function(){ 
+  let activeCategory='todos'; 
+  const categoryNames={ 
+    'todos':'Todos', 
+    'perfumes':'Perfumes', 
+    'body-splash':'Body Splash', 
+    'hidratantes':'Hidratantes', 
+    'desodorantes':'Desodorantes', 
+    'sabonetes':'Sabonetes', 
+    'kits':'Kits', 
+    'cuidados-corporais':'Cuidados Corporais' 
+  }; 
+  function categoryForCard(card){ 
+    const text=((card.querySelector('.name')?.textContent||'')+' '+(card.querySelector('img')?.alt||'')).toLowerCase(); 
+    if(/\bkit\b|combo|calend[aá]rio do advento/.test(text)) return 'kits'; 
+    if(/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash'; 
+    if(/sabonete/.test(text)) return 'sabonetes'; 
+    if(/body spray|antitranspirante|desodorante body spray|spray [íi]ntimo/.test(text)) return 'desodorantes'; 
+    if(/hidratante|hidratantes|lo[cç][aã]o|creme relaxante|sufl[eê] hidratante/.test(text)) return 'hidratantes'; 
+    if(/desodorante col[oô]nia|eau de parfum|perfume|col[oô]nia/.test(text)) return 'perfumes'; 
+    return 'cuidados-corporais'; 
+  } 
+  function normalize(text){return (text||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()} 
+  function isFavorite(card){return !!card.querySelector('.favorite-btn.active')} 
+  function applyAllFilters(){ 
+    const term=normalize(document.getElementById('searchInput')?.value||''); 
+    const brand=window.juhActiveBrand||'todos'; 
+    const favoritesOnly=!!document.querySelector('#favoritesToggle.active'); 
+    document.querySelectorAll('.card').forEach(card=>{ 
+      const brandOk=brand==='todos'||card.dataset.brand===brand; 
+      const cat=categoryForCard(card); 
+      card.dataset.category=cat; 
+      let categoryOk=activeCategory==='todos'||cat===activeCategory; 
+      if(activeCategory==='destaques') categoryOk=card.dataset.featured==='true'; 
+      if(activeCategory==='ofertas') categoryOk=card.dataset.offer==='true'; 
+      const number=card.querySelector('.product-number')?.textContent||''; 
+      const name=card.querySelector('.name')?.textContent||''; 
+      const alt=card.querySelector('img')?.alt||''; 
+      const textOk=!term||normalize(name+' '+alt+' '+number).includes(term); 
+      const favoriteOk=!favoritesOnly||isFavorite(card); 
+      card.style.display=(brandOk&&categoryOk&&textOk&&favoriteOk)?'':'none'; 
+    }); 
+  } 
+  // Mantém a marca atual disponível para o filtro de categorias. 
+  const originalFilter=window.filterProducts; 
+  window.filterProducts=function(brand){ 
+    window.juhActiveBrand=brand; 
+    if(typeof originalFilter==='function') originalFilter(brand); 
+    applyAllFilters(); 
+  }; 
+  window.searchProducts=function(){applyAllFilters()}; 
+  function setup(){ 
+    document.querySelectorAll('.card').forEach(card=>card.dataset.category=categoryForCard(card)); 
+    document.querySelectorAll('#categoryBar button').forEach(btn=>{ 
+      btn.addEventListener('click',function(){ 
+        activeCategory=this.dataset.category||'todos'; 
+        document.querySelectorAll('#categoryBar button').forEach(b=>b.classList.toggle('active',b===this)); 
+        applyAllFilters(); 
+      }); 
+    }); 
+    const fav=document.getElementById('favoritesToggle'); 
+    if(fav) fav.addEventListener('click',()=>setTimeout(applyAllFilters,30)); 
+    applyAllFilters(); 
+  } 
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup); else setup(); 
+  window.juhCategoryForCard=categoryForCard; 
+})(); 
 </script> 
 <script> 
 (function(){ 
