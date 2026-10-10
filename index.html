@@ -1,184 +1,7 @@
 
 <!DOCTYPE html> 
  
-<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Juh Cosméticos — Prévia final</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#faf7f5;color:#2b211e}header{background:#211713;color:#fff;padding:20px 16px;position:sticky;top:0;z-index:2}.wrap{max-width:1100px;margin:auto}.brand{font-size:25px;font-weight:700}nav{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}nav button{border:0;background:#3b2a24;color:#fff;padding:9px 13px;border-radius:20px}.hero{padding:38px 16px 24px;text-align:center;background:linear-gradient(135deg,#f3e3d6,#fff)}.hero h1{font-size:34px;margin:0 0 8px}.hero p{margin:0;color:#6b5a53}.search{max-width:620px;width:calc(100% - 32px);display:block;margin:18px auto 0;padding:14px 17px;border:1px solid #ded5d0;border-radius:14px;background:#fff;font-size:16px}.title{padding:25px 16px 0;font-size:25px}.sub{padding:0 16px;color:#776963}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:20px;padding:20px 16px 45px}.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px #00000012;position:relative}.card img{width:100%;aspect-ratio:1.28/1;object-fit:contain;display:block;background:#fff}.info{padding:16px}.tag{font-size:12px;color:#8a5b45;font-weight:bold;text-transform:uppercase}.name{font-size:18px;line-height:1.25;margin:7px 0}.price{font-size:24px;font-weight:800;margin:12px 0}.buy{width:100%;border:0;background:#211713;color:#fff;padding:12px;border-radius:10px;font-weight:700;font-size:15px}.badge{position:absolute;top:11px;left:11px;background:#211713;color:#fff;padding:6px 9px;border-radius:18px;font-size:11px;font-weight:800}.note{margin:0 16px 25px;padding:12px 14px;border-radius:12px;background:#f2e1d6;color:#5c3f32;font-size:13px}@media(max-width:600px){.hero h1{font-size:29px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-left:12px;padding-right:12px}.card img{aspect-ratio:1.32/1}.info{padding:11px}.name{font-size:14px}.price{font-size:20px}.buy{font-size:13px;padding:10px}.tag{font-size:10px}}.lightbox-caption{order:-1;margin:0 0 10px;color:#fff;font-weight:600;font-size:14px;line-height:1.25;text-align:center;max-width:92vw;} 
-.lightbox-cart-btn{display:block;margin:12px auto 0;padding:12px 22px;border:0;border-radius:999px;background:#111;color:#fff;font-weight:700;font-size:15px;cursor:pointer}.lightbox-cart-btn:active{transform:scale(.98)} 
-/* Logo JUH Cosméticos */ 
-.brand-logo{display:block;width:min(310px,82vw);height:auto;margin:0 auto;border-radius:14px;box-shadow:0 4px 18px #0004} 
-.brand{display:none} 
-@media(max-width:600px){header{padding:8px 10px 9px}.brand-logo{width:min(245px,76vw);border-radius:10px}nav{margin-top:7px;gap:7px;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:2px;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{flex:0 0 auto;white-space:nowrap;padding:8px 12px}} 
- 
-.category-bar{margin-top:10px;display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;padding-bottom:3px;scrollbar-width:none}.category-bar::-webkit-scrollbar{display:none}.category-bar button{flex:0 0 auto;border:1px solid #6a554c;background:transparent;color:#fff;padding:8px 12px;border-radius:18px;font-size:13px;cursor:pointer}.category-bar button.active{background:#fff;color:#5c473f;border-color:#fff}.category-label{font-size:11px;color:#cdbeb7;text-transform:uppercase;letter-spacing:.08em;margin-top:10px;margin-bottom:4px}@media(max-width:600px){.category-bar button{font-size:12px;padding:7px 10px}} 
-</style><style> 
-.cart-float{position:fixed;right:18px;bottom:18px;z-index:50;width:58px;height:58px;border:0;border-radius:50%;background:#211713;color:#fff;box-shadow:0 8px 25px #0004;font-size:25px;cursor:pointer}.cart-count{position:absolute;right:-3px;top:-4px;background:#b8875a;color:#fff;border-radius:20px;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}.cart-overlay{display:none;position:fixed;inset:0;background:#0008;z-index:60}.cart-panel{position:absolute;right:0;top:0;height:100%;width:min(430px,92vw);background:#fff;display:flex;flex-direction:column}.cart-head{padding:18px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}.cart-head h2{margin:0;font-size:22px}.cart-close{border:0;background:none;font-size:30px}.cart-items{padding:15px;overflow:auto;flex:1}.cart-item{display:grid;grid-template-columns:58px 1fr auto;gap:10px;align-items:center;border-bottom:1px solid #eee;padding:10px 0}.cart-item img{width:58px;height:58px;object-fit:cover;border-radius:9px}.cart-item h3{font-size:13px;margin:0 0 4px}.cart-item p{margin:0;font-weight:700}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:1px solid #ddd;background:#f7f3f0;border-radius:7px;width:28px;height:28px}.remove{border:0;background:none;color:#8a5b45;font-size:11px;padding:4px 0}.cart-foot{padding:15px;border-top:1px solid #eee}.cart-total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin-bottom:12px}.checkout{width:100%;border:0;background:#211713;color:#fff;padding:13px;border-radius:10px;font-weight:800}.empty{text-align:center;color:#777;padding:40px 10px} 
-</style> 
-<style> 
-.product-number{ 
-  position:absolute; 
-  top:11px; 
-  right:11px; 
-  z-index:3; 
-  background:#f2e1d6; 
-  color:#5c3f32; 
-  padding:6px 9px; 
-  border-radius:18px; 
-  font-size:11px; 
-  font-weight:800; 
-} 
-</style> 
-<style id="catalog-image-lightbox"> 
-  .image-lightbox{ 
-    position:fixed;inset:0;background:rgba(0,0,0,.82);display:none; 
-    align-items:center;justify-content:center;flex-direction:column;padding:58px 18px 24px;z-index:99999; 
-    cursor:zoom-out;backdrop-filter:blur(3px) 
-  } 
-  .image-lightbox.open{display:flex} 
-  .image-lightbox img{ 
-    max-width:94vw;max-height:78vh;width:auto;height:auto;object-fit:contain; 
-    border-radius:12px;box-shadow:0 12px 45px rgba(0,0,0,.45);cursor:default 
-  } 
-  .image-lightbox .close{ 
-    position:absolute;top:14px;right:18px;width:42px;height:42px;border:0; 
-    border-radius:50%;background:rgba(255,255,255,.16);color:#fff; 
-    font-size:30px;line-height:42px;cursor:pointer 
-  } 
-  .card img{cursor:zoom-in} 
-</style> 
-<style id="product-number-fix-v2"> 
-.card{position:relative !important;} 
-.card .number{ 
-  position:absolute !important; 
-  top:12px !important; 
-  right:12px !important; 
-  left:auto !important; 
-  bottom:auto !important; 
-  transform:none !important; 
-  z-index:20 !important; 
-  display:flex !important; 
-  align-items:center !important; 
-  justify-content:center !important; 
-  width:40px !important; 
-  height:30px !important; 
-  padding:0 !important; 
-  margin:0 !important; 
-  background:#f2e1d6 !important; 
-  color:#5c3f32 !important; 
-  border-radius:18px !important; 
-  font-size:12px !important; 
-  font-weight:800 !important; 
-  line-height:1 !important; 
-  pointer-events:none !important; 
-} 
-</style> 
-<style id="product-number-real-fix"> 
-.card{position:relative !important;} 
-.card .product-number{ 
-  position:absolute !important; 
-  top:11px !important; 
-  right:11px !important; 
-  left:auto !important; 
-  bottom:auto !important; 
-  transform:none !important; 
-  z-index:30 !important; 
-  display:flex !important; 
-  align-items:center !important; 
-  justify-content:center !important; 
-  min-width:40px !important; 
-  height:30px !important; 
-  box-sizing:border-box !important; 
-  padding:0 9px !important; 
-  margin:0 !important; 
-  background:#f2e1d6 !important; 
-  color:#5c3f32 !important; 
-  border-radius:18px !important; 
-  font-size:11px !important; 
-  font-weight:800 !important; 
-  line-height:1 !important; 
-  pointer-events:none !important; 
-} 
-</style> 
-<style id="number-under-sticky-header"> 
-header{z-index:100 !important;} 
-.card{position:relative !important; z-index:1 !important;} 
-.card .product-number{ 
-  position:absolute !important; 
-  top:11px !important; 
-  right:11px !important; 
-  left:auto !important; 
-  bottom:auto !important; 
-  transform:none !important; 
-  z-index:1 !important; 
-  display:flex !important; 
-  align-items:center !important; 
-  justify-content:center !important; 
-  min-width:40px !important; 
-  height:30px !important; 
-  box-sizing:border-box !important; 
-  padding:0 9px !important; 
-  margin:0 !important; 
-  background:#f2e1d6 !important; 
-  color:#5c3f32 !important; 
-  border-radius:18px !important; 
-  font-size:11px !important; 
-  font-weight:800 !important; 
-  line-height:1 !important; 
-  pointer-events:none !important; 
-} 
-</style> 
-<style id="ajuste-fotos-produtos-reorganizados"> 
-.card[data-product-number="018"] img, 
-.card[data-product-number="023"] img, 
-.card[data-product-number="024"] img { 
-  object-fit: contain !important; 
-  object-position: center center !important; 
-  padding: 10px !important; 
-  box-sizing: border-box !important; 
-} 
-</style> 
-<style id="cart-clear-style"> 
-.cart-clear-row{display:flex;justify-content:flex-end;margin:8px 0 10px} 
-.cart-clear{border:0;background:transparent;color:#8a5b45;font-size:12px;font-weight:700;padding:6px 4px;cursor:pointer} 
-.cart-clear:active{opacity:.65} 
-</style> 
-<style id="interface-premium-v1"> 
-:root{ 
- --bg:#fbf8f6;--surface:#fff;--ink:#2a201e;--muted:#766963;--line:#eadfd9; 
- --accent:#9b6a58;--accent-dark:#6f493c;--soft:#f3e7e1;--gold:#b8925b; 
-} 
-html{scroll-behavior:smooth} 
-body{background:radial-gradient(circle at 50% -10%,#fff 0,#fbf8f6 42%,#f8f3f0 100%);color:var(--ink);font-family:Arial,Helvetica,sans-serif} 
-header{background:rgba(42,32,30,.96)!important;backdrop-filter:blur(14px);padding:14px 16px!important;box-shadow:0 5px 24px rgba(42,32,30,.14)} 
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1180px} 
-.brand{font-family:Georgia,'Times New Roman',serif!important;font-size:29px!important;letter-spacing:.5px} 
-.brand:after{content:'  •  beleza & cuidados';font-family:Arial,Helvetica,sans-serif;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#d9c1b5;font-weight:500;vertical-align:middle} 
-nav{margin-top:0!important;gap:7px!important;justify-content:flex-end} 
-nav button{background:transparent!important;border:1px solid rgba(255,255,255,.22)!important;color:#fff!important;padding:9px 13px!important;border-radius:999px!important;font-weight:700;transition:.2s} 
-nav button:hover,nav button:active{background:#fff!important;color:#2a201e!important} 
-.hero{position:relative;overflow:hidden;padding:58px 16px 30px!important;background:linear-gradient(135deg,#f3e4dc 0%,#fffaf7 48%,#eee1da 100%)!important;border-bottom:1px solid #eee1da} 
-.hero:before,.hero:after{content:'';position:absolute;border-radius:50%;filter:blur(1px);pointer-events:none} 
-.hero:before{width:220px;height:220px;background:rgba(184,146,91,.12);right:-70px;top:-90px} 
-.hero:after{width:170px;height:170px;background:rgba(155,106,88,.08);left:-65px;bottom:-90px} 
-.hero .wrap{position:relative;z-index:1} 
-.hero h1{font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(34px,6vw,52px)!important;line-height:1.05;letter-spacing:-1px;margin:0 auto 12px!important;max-width:720px} 
-.hero p{font-size:14px!important;color:#6f625d!important;letter-spacing:.2px} 
-.search{position:relative;z-index:2;max-width:720px!important;margin:-3px auto 0!important;padding:16px 20px!important;border:1px solid #e6d9d2!important;border-radius:999px!important;background:rgba(255,255,255,.96)!important;box-shadow:0 12px 32px rgba(66,45,38,.10)!important;outline:none!important;color:var(--ink);font-size:15px!important} 
-.search:focus{border-color:#c6a99b!important;box-shadow:0 0 0 4px rgba(155,106,88,.10),0 12px 32px rgba(66,45,38,.10)!important} 
-.title{max-width:1180px;margin:34px auto 0!important;padding:0 16px!important;font-family:Georgia,'Times New Roman',serif;font-size:30px!important} 
-.sub{max-width:1180px;margin:6px auto 0!important;padding:0 16px!important;color:var(--muted)!important;font-size:14px} 
-.note{max-width:1180px;margin:18px auto 0!important;border:1px solid #ead9ce!important;background:#f7eee9!important;color:#6f4d40!important;border-radius:14px!important;padding:10px 14px!important;font-size:12px!important} 
-main.wrap{max-width:1180px!important} 
-.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:18px!important;padding:22px 16px 60px!important} 
-.card{border:1px solid #eee4df;background:rgba(255,255,255,.98)!important;border-radius:20px!important;box-shadow:0 8px 28px rgba(48,34,29,.07)!important;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;} 
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(48,34,29,.12)!important;border-color:#e2d0c7} 
-.card img{aspect-ratio:1/1.04!important;background:linear-gradient(180deg,#fff,#fcfaf9)!important;padding:12px;transition:transform .28s ease} 
-.card:hover img{transform:scale(1.025)} 
-.info{padding:14px 15px 16px!important} 
-.tag{color:var(--accent)!important;font-size:10px!important;letter-spacing:1.1px} 
-.name{font-size:16px!important;line-height:1.3!important;min-height:42px;margin:7px 0!important} 
-.price{font-size:22px!important;margin:11px 0 12px!important;color:#241b18} 
-.buy{background:linear-gradient(135deg,#2c211e,#4a332b)!important;border-radius:12px!important;padding:12px!important;box-shadow:0 5px 12px rgba(42,32,30,.12);transition:.2s} 
-.buy:hover{filter:brightness(1.08);transform:translateY(-1px)} 
-.badge{top:12px!important;left:12px!important;background:#fff!important;color:#7b5548!important;border:1px solid #ead9d0!important;box-shadow:0 4px 12px rgba(0,0,0,.06);font-size:10px!important} 
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Juh Cosméticos — Prévia final</title><style>*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serifdata:image/webp;base64,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c4AAAAround:#fff!important;color:#7b5548!important;border:1px solid #ead9d0!important;box-shadow:0 4px 12px rgba(0,0,0,.06);font-size:10px!important} 
 .product-number{background:#2c211e!important;color:#fff!important;border:1px solid rgba(255,255,255,.2)!important;box-shadow:0 4px 12px rgba(0,0,0,.12)} 
 .cart-float{width:60px!important;height:60px!important;right:18px!important;bottom:18px!important;background:linear-gradient(135deg,#2c211e,#6b473a)!important;box-shadow:0 12px 30px rgba(42,32,30,.25)!important;font-size:24px!important} 
 .cart-count{background:#c39b62!important;border:2px solid #fff;min-width:23px!important;height:23px!important} 
@@ -715,74 +538,69 @@ function clearCart(){
   else startObserver(); 
 })(); 
 </script> 
-<script id="categories-feature"> 
-(function(){ 
-  let activeCategory='todos'; 
-  const categoryNames={ 
-    'todos':'Todos', 
-    'perfumes':'Perfumes', 
-    'body-splash':'Body Splash', 
-    'hidratantes':'Hidratantes', 
-    'desodorantes':'Desodorantes', 
-    'sabonetes':'Sabonetes', 
-    'kits':'Kits', 
-    'cuidados-corporais':'Cuidados Corporais' 
-  }; 
-  function categoryForCard(card){ 
-    const text=((card.querySelector('.name')?.textContent||'')+' '+(card.querySelector('img')?.alt||'')).toLowerCase(); 
-    if(/\bkit\b|combo|calend[aá]rio do advento/.test(text)) return 'kits'; 
-    if(/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash'; 
-    if(/sabonete/.test(text)) return 'sabonetes'; 
-    if(/body spray|antitranspirante|desodorante body spray|spray [íi]ntimo/.test(text)) return 'desodorantes'; 
-    if(/hidratante|hidratantes|lo[cç][aã]o|creme relaxante|sufl[eê] hidratante/.test(text)) return 'hidratantes'; 
-    if(/desodorante col[oô]nia|eau de parfum|perfume|col[oô]nia/.test(text)) return 'perfumes'; 
-    return 'cuidados-corporais'; 
-  } 
-  function normalize(text){return (text||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()} 
-  function isFavorite(card){return !!card.querySelector('.favorite-btn.active')} 
-  function applyAllFilters(){ 
-    const term=normalize(document.getElementById('searchInput')?.value||''); 
-    const brand=window.juhActiveBrand||'todos'; 
-    const favoritesOnly=!!document.querySelector('#favoritesToggle.active'); 
-    document.querySelectorAll('.card').forEach(card=>{ 
-      const brandOk=brand==='todos'||card.dataset.brand===brand; 
-      const cat=categoryForCard(card); 
-      card.dataset.category=cat; 
-      let categoryOk=activeCategory==='todos'||cat===activeCategory; 
-      if(activeCategory==='destaques') categoryOk=card.dataset.featured==='true'; 
-      if(activeCategory==='ofertas') categoryOk=card.dataset.offer==='true'; 
-      const number=card.querySelector('.product-number')?.textContent||''; 
-      const name=card.querySelector('.name')?.textContent||''; 
-      const alt=card.querySelector('img')?.alt||''; 
-      const textOk=!term||normalize(name+' '+alt+' '+number).includes(term); 
-      const favoriteOk=!favoritesOnly||isFavorite(card); 
-      card.style.display=(brandOk&&categoryOk&&textOk&&favoriteOk)?'':'none'; 
-    }); 
-  } 
-  // Mantém a marca atual disponível para o filtro de categorias. 
-  const originalFilter=window.filterProducts; 
-  window.filterProducts=function(brand){ 
-    window.juhActiveBrand=brand; 
-    if(typeof originalFilter==='function') originalFilter(brand); 
-    applyAllFilters(); 
-  }; 
-  window.searchProducts=function(){applyAllFilters()}; 
-  function setup(){ 
-    document.querySelectorAll('.card').forEach(card=>card.dataset.category=categoryForCard(card)); 
-    document.querySelectorAll('#categoryBar button').forEach(btn=>{ 
-      btn.addEventListener('click',function(){ 
-        activeCategory=this.dataset.category||'todos'; 
-        document.querySelectorAll('#categoryBar button').forEach(b=>b.classList.toggle('active',b===this)); 
-        applyAllFilters(); 
-      }); 
-    }); 
-    const fav=document.getElementById('favoritesToggle'); 
-    if(fav) fav.addEventListener('click',()=>setTimeout(applyAllFilters,30)); 
-    applyAllFilters(); 
-  } 
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup); else setup(); 
-  window.juhCategoryForCard=categoryForCard; 
-})(); 
+<script id="categories-feature">
+(function(){
+  let activeCategory='todos';
+  let activeBrand='todos';
+  function normalize(text){return (text||'').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
+  function categoryForCard(card){
+    const text=normalize((card.querySelector('.name')?.textContent||'')+' '+(card.querySelector('img')?.alt||''));
+    if(/\bkit\b|combo|calendario do advento/.test(text)) return 'kits';
+    if(/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash';
+    if(/sabonete/.test(text)) return 'sabonetes';
+    if(/hidratante|hidratantes|locao|creme relaxante|sufle hidratante/.test(text)) return 'hidratantes';
+    if(/desodorante body spray|body spray|antitranspirante|spray intimo/.test(text)) return 'desodorantes';
+    if(/desodorante colonia|eau de parfum|perfume|colonia|parfum|eau de toilette/.test(text)) return 'perfumes';
+    return 'cuidados-corporais';
+  }
+  function isFavorite(card){return !!card.querySelector('.favorite-btn.active')}
+  function applyAllFilters(){
+    const input=document.getElementById('searchInput');
+    const term=normalize(input ? input.value : '');
+    const favoritesOnly=!!document.querySelector('#favoritesToggle.active');
+    document.querySelectorAll('.card').forEach(card=>{
+      const cat=categoryForCard(card);
+      card.dataset.category=cat;
+      const brandOk=activeBrand==='todos'||card.dataset.brand===activeBrand;
+      let categoryOk=activeCategory==='todos'||cat===activeCategory;
+      if(activeCategory==='destaques') categoryOk=card.dataset.featured==='true';
+      if(activeCategory==='ofertas') categoryOk=card.dataset.offer==='true';
+      const number=card.querySelector('.product-number')?.textContent||card.dataset.productNumber||'';
+      const name=card.querySelector('.name')?.textContent||'';
+      const alt=card.querySelector('img')?.alt||'';
+      const textOk=!term||normalize(name+' '+alt+' '+number+' '+(card.dataset.brand||'')).includes(term);
+      const favoriteOk=!favoritesOnly||isFavorite(card);
+      card.style.display=(brandOk&&categoryOk&&textOk&&favoriteOk)?'':'none';
+    });
+  }
+  // Unifica os filtros de marca, categoria e pesquisa para que não se sobreponham.
+  window.filterProducts=function(brand){
+    activeBrand=brand||'todos';
+    window.juhActiveBrand=activeBrand;
+    applyAllFilters();
+  };
+  window.searchProducts=applyAllFilters;
+  function setup(){
+    document.querySelectorAll('.card').forEach(card=>card.dataset.category=categoryForCard(card));
+    const bar=document.getElementById('categoryBar');
+    if(bar){
+      bar.addEventListener('click',function(event){
+        const btn=event.target.closest('button[data-category]');
+        if(!btn||!bar.contains(btn)) return;
+        activeCategory=btn.dataset.category||'todos';
+        bar.querySelectorAll('button[data-category]').forEach(b=>b.classList.toggle('active',b===btn));
+        applyAllFilters();
+      });
+    }
+    const fav=document.getElementById('favoritesToggle');
+    if(fav) fav.addEventListener('click',()=>setTimeout(applyAllFilters,30));
+    applyAllFilters();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup,{once:true});
+  else setup();
+  window.juhCategoryForCard=categoryForCard;
+  window.juhApplyAllFilters=applyAllFilters;
+})();
 </script> 
 <script> 
 (function(){ 
@@ -823,5 +641,73 @@ function clearCart(){
   }); 
 })(); 
 </script> 
+<script id="search-and-category-final-fix">
+(function(){
+  'use strict';
+  var selectedBrand = 'todos';
+  var selectedCategory = 'todos';
+  function norm(value){
+    return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  }
+  function getCategory(card){
+    var text = norm((card.querySelector('.name') ? card.querySelector('.name').textContent : '') + ' ' + (card.querySelector('img') ? card.querySelector('img').alt : '') + ' ' + card.textContent);
+    if (/\bkit\b|combo|calendario do advento/.test(text)) return 'kits';
+    if (/body splash|splash desodorante|spray perfumado/.test(text)) return 'body-splash';
+    if (/sabonete/.test(text)) return 'sabonetes';
+    if (/hidratante|locao|creme relaxante|sufle hidratante/.test(text)) return 'hidratantes';
+    if (/desodorante body spray|body spray|antitranspirante|spray intimo/.test(text)) return 'desodorantes';
+    if (/desodorante colonia|eau de parfum|perfume|colonia|parfum|eau de toilette/.test(text)) return 'perfumes';
+    return 'cuidados-corporais';
+  }
+  function apply(){
+    var input = document.getElementById('searchInput');
+    var term = norm(input ? input.value : '');
+    var favToggle = document.getElementById('favoritesToggle');
+    var favoritesOnly = !!(favToggle && favToggle.classList.contains('active'));
+    document.querySelectorAll('.card').forEach(function(card){
+      var number = card.querySelector('.product-number') ? card.querySelector('.product-number').textContent : (card.dataset.productNumber || '');
+      var img = card.querySelector('img');
+      var name = card.querySelector('.name');
+      var searchable = norm(card.textContent + ' ' + (img ? img.alt : '') + ' ' + (name ? name.textContent : '') + ' ' + number + ' ' + (card.dataset.brand || '') + ' ' + (card.dataset.category || ''));
+      var brandOk = selectedBrand === 'todos' || norm(card.dataset.brand) === selectedBrand;
+      var category = card.dataset.category || getCategory(card);
+      var categoryOk = selectedCategory === 'todos' || category === selectedCategory;
+      if (selectedCategory === 'destaques') categoryOk = card.dataset.featured === 'true';
+      if (selectedCategory === 'ofertas') categoryOk = card.dataset.offer === 'true';
+      var favOk = !favoritesOnly || !!card.querySelector('.favorite-btn.active');
+      card.style.display = brandOk && categoryOk && (!term || searchable.indexOf(term) !== -1) && favOk ? '' : 'none';
+    });
+  }
+  window.searchProducts = apply;
+  window.filterProducts = function(brand){ selectedBrand = norm(brand || 'todos') || 'todos'; apply(); };
+  function bind(){
+    var input = document.getElementById('searchInput');
+    if(input){ input.addEventListener('input', apply); input.addEventListener('search', apply); input.addEventListener('keyup', apply); }
+    var bar = document.getElementById('categoryBar');
+    if(bar){
+      bar.addEventListener('click', function(event){
+        var button = event.target.closest('button[data-category]');
+        if(!button) return;
+        selectedCategory = button.dataset.category || 'todos';
+        bar.querySelectorAll('button[data-category]').forEach(function(b){ b.classList.toggle('active', b === button); });
+        apply();
+      }, true);
+    }
+    var nav = document.querySelector('header nav');
+    if(nav){ nav.addEventListener('click', function(event){
+      var button = event.target.closest('button[onclick*="filterProducts"]');
+      if(!button) return;
+      var match = (button.getAttribute('onclick') || '').match(/filterProducts\(['"]([^'"]+)['"]\)/);
+      if(match){ selectedBrand = norm(match[1]) || 'todos'; apply(); }
+    }, true); }
+    var fav = document.getElementById('favoritesToggle');
+    if(fav) fav.addEventListener('click', function(){ setTimeout(apply, 40); });
+    document.querySelectorAll('.card').forEach(function(card){ if(!card.dataset.category) card.dataset.category = getCategory(card); });
+    apply();
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind, {once:true}); else bind();
+})();
+
+</script>
 </body></html> 
  
